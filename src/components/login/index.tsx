@@ -1,39 +1,63 @@
 import * as React from 'react';
 import styles from "./login.module.css";
 import Image from "next/image";
+import { login } from './actions';
+import { ThirdPartyLogin, thirdPartyLogins } from './constants';
 
 export const Login: React.FC = () => {
 
-    const [login, setLogin] = React.useState(true);
+    const [isLogin, setIsLogin] = React.useState(true);
     const [forgotPassword, setForgotPassword] = React.useState(false);
+    const loginFormRef = React.useRef<HTMLFormElement>(null);
 
     const loginRef = React.useRef<HTMLButtonElement>(null);
     const signupRef = React.useRef<HTMLButtonElement>(null);
 
-    const headerMessage = login ? "Log in with your e-mail or your phone number." : "Join the revolution! To begin using our services, enter your personal information below and join the Dyshez movement."
+    const headerMessage = isLogin ? "Log in with your e-mail or your phone number." : "Join the revolution! To begin using our services, enter your personal information below and join the Dyshez movement."
 
     const toggleForgotPassword = () => {
         // TODO: Add logic to remove error messages and reset inputs
         setForgotPassword(!forgotPassword);
     }
 
+    const toggleIsLogin = () => {
+        setIsLogin(!isLogin);
+    }
+
+    const handleCustomSubmit = () => {
+        if (loginFormRef.current) {
+            loginFormRef.current.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+        }
+    };
+
+    const handleLoginSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault(); 
+        const formElement = event.currentTarget as HTMLFormElement;
+
+        const formData = new FormData(formElement);
+        const error = await login(formData);
+        if(error) {
+            // TODO: Handle login credentials error
+        }
+    }
+
     return (
-        <div className={`${styles["card"]} ${!login ? styles["signup"] : forgotPassword ? styles["forgot-password"] : ""}`}>
+        <div className={`${styles["card"]} ${!isLogin ? styles["signup"] : forgotPassword ? styles["forgot-password"] : ""}`}>
 
             {/* HEADER */}
             {!forgotPassword && (
                 <div className={styles.header}>
                     <div className={styles['header-actions']}>
-                        <button ref={loginRef} className={login ? styles['button-active'] : styles.button} onClick={() => setLogin(true)}>
+                        <button ref={loginRef} className={isLogin ? styles['button-active'] : styles.button} onClick={toggleIsLogin}>
                             Login
                         </button>
-                        <button ref={signupRef} className={!login ? styles['button-active'] : styles.button} onClick={() => setLogin(false)}>
+                        <button ref={signupRef} className={!isLogin ? styles['button-active'] : styles.button} onClick={toggleIsLogin}>
                             Sign Up
                         </button>
                     </div>
                     <div 
-                        className={`${styles["header-actions-underline"]} ${!login ? styles["move-right"] : ""}`} 
-                        style={{width: `${login ? loginRef.current?.offsetWidth : signupRef.current?.offsetWidth}px`}} 
+                        className={`${styles["header-actions-underline"]} ${!isLogin ? styles["move-right"] : ""}`} 
+                        style={{width: `${isLogin ? loginRef.current?.offsetWidth : signupRef.current?.offsetWidth}px`}} 
                     />
                     <div className={styles.instruction}>{headerMessage}</div>
                 </div>
@@ -47,7 +71,7 @@ export const Login: React.FC = () => {
             )}
 
             {/* LOGIN VIEW */}
-            <div className={styles["login-form"]}>
+            <form className={styles["login-form"]} onSubmit={handleLoginSubmit} ref={loginFormRef}>
                 <div className={styles["login-inputs"]}>
                     <div className={styles["input-container"]}>
                         <Image
@@ -57,7 +81,7 @@ export const Login: React.FC = () => {
                             height={18}
                             priority
                         />
-                        <input className={styles.input} type="text" placeholder={`${!forgotPassword ? "E-mail or phone number" : "E-mail*"}`} />
+                        <input name="email" className={styles.input} type="text" placeholder={`${!forgotPassword ? "E-mail or phone number" : "E-mail*"}`} />
                     </div>
                     {!forgotPassword && (<div className={styles["input-container"]}>
                         <Image
@@ -67,12 +91,12 @@ export const Login: React.FC = () => {
                             height={18}
                             priority
                         />
-                        <input className={styles.input} type="password" placeholder='Password' />
+                        <input name="password" className={styles.input} type="password" placeholder='Password' />
                     </div>)}
                 </div>
                 <div className={styles["login-button-container"]}>
                     <div className={styles["login-button-container"]}>
-                        <div className={styles["login-button"]}>
+                        <div onClick={handleCustomSubmit} className={styles["login-button"]}>
                             <p>Continue</p>
                             <Image
                                 src="/arrow-right.svg"
@@ -84,44 +108,27 @@ export const Login: React.FC = () => {
                         </div>
                     </div>
                     <div className={styles["forgot-password"]}>
-                            {!forgotPassword ? "Forgot your password? " : "Remembered your password? "}
-                            <p onClick={toggleForgotPassword}>
-                                {!forgotPassword ? "Reset it." : "Log in."}
-                            </p>
-                        </div>
+                        {!forgotPassword ? "Forgot your password? " : "Remembered your password? "}
+                        <p onClick={toggleForgotPassword}>
+                            {!forgotPassword ? "Reset it." : "Log in."}
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </form>
 
             {!forgotPassword && (<div className={styles["login-socials"]}>
-                <div className={styles["login-socials-button"]}>
-                    <Image
-                        src="/apple.svg"
-                        alt="apple login icon"
-                        width={20}
-                        height={24}
-                        priority
-                    />
-                </div>
-                <div className={styles["login-socials-button"]}>
-                    <Image
-                        src="/google.svg"
-                        alt="google login icon"
-                        width={24}
-                        height={24}
-                        priority
-                    />
-                </div>
-                <div className={styles["login-socials-button"]}>
-                    <Image
-                        src="/facebook.svg"
-                        alt="facebook login icon"
-                        width={24}
-                        height={24}
-                        priority
-                    />
-                </div>
+                {thirdPartyLogins.map((thirdParty: ThirdPartyLogin, index: number) => (
+                    <div key={index} className={styles["login-socials-button"]}>
+                        <Image
+                            src={thirdParty.icon}
+                            alt={thirdParty.altText}
+                            width={24}
+                            height={24}
+                            priority
+                        />
+                    </div>
+                ))}
             </div>)}
-
         </div>
     );
 };

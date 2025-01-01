@@ -1,5 +1,28 @@
 {
-  "node": {},
+  "node": {
+    "4013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e": {
+      "workers": {
+        "app/login/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fcomponents%2Flogin%2Factions.ts%22%2C%5B%5B%224013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e%22%2C%22login%22%5D%2C%5B%22403c401a970f358b6ca15bca89bc26044e8fcaa853%22%2C%22signup%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/login/page": "action-browser"
+      }
+    },
+    "403c401a970f358b6ca15bca89bc26044e8fcaa853": {
+      "workers": {
+        "app/login/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fcomponents%2Flogin%2Factions.ts%22%2C%5B%5B%224013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e%22%2C%22login%22%5D%2C%5B%22403c401a970f358b6ca15bca89bc26044e8fcaa853%22%2C%22signup%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/login/page": "action-browser"
+      }
+    }
+  },
   "edge": {},
   "encryptionKey": "bzri5vHK6bC5ukun2Zk/ITXl/qS2zEvXCfyESBpj67w="
 }

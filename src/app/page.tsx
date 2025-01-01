@@ -1,20 +1,23 @@
+'use client'
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import { Login } from "@/components/login";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
+      <div className={styles.main}>
         <Image
           src="/logo.svg"
-          alt="Next.js logo"
+          alt="Dyshez logo"
           width={194}
           height={48}
           priority
         />
         <div className={styles.welcome}>!Bienvenido de vuelta!</div>
-      </main>
-
+      </div>
+      <Login />
     </div>
   );
 }

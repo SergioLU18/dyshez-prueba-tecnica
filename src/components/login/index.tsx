@@ -1,13 +1,10 @@
 import * as React from 'react';
 import styles from "./login.module.css";
 import Image from "next/image";
-import { usePathname } from 'next/navigation';
 import { login, resetPassword } from './actions';
 import { ThirdPartyLogin, thirdPartyLogins } from './constants';
 
 export const Login: React.FC = () => {
-
-    const currentPath = usePathname();
 
     const [isLogin, setIsLogin] = React.useState(true);
     const [forgotPassword, setForgotPassword] = React.useState(false);
@@ -23,7 +20,6 @@ export const Login: React.FC = () => {
     const signupRef = React.useRef<HTMLButtonElement>(null);
 
     const toggleForgotPassword = () => {
-        // TODO: Add logic to remove error messages and reset inputs
         setUserFormData({
             email: "",
             password: ""
@@ -74,8 +70,6 @@ export const Login: React.FC = () => {
             [name]: value,
         }));
     };
-
-    const isReset = currentPath.includes('/login/reset');
         
     const actionButtonDisabled = loading || !userFormData.email || (!forgotPassword && !userFormData.password);
     
@@ -83,7 +77,7 @@ export const Login: React.FC = () => {
     
     const headerMessage = isLogin ? "Log in with your e-mail or your phone number." : "Join the revolution! To begin using our services, enter your personal information below and join the Dyshez movement."
    
-    const resetPasswordMessage = isReset ? "Please, enter a new password" : resetSent ? `An email with instructions to reset your password has been sent to ${userFormData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
+    const resetPasswordMessage = resetSent ? `An email with instructions to reset your password has been sent to ${userFormData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
     
     return (
         <div className={`${styles["card"]} ${!isLogin ? styles["signup"] : forgotPassword ? styles["forgot-password"] : ""}`}>

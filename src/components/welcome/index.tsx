@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Image from "next/image";
-import styles from "./welcome.module.css";
+import styles from "./component.module.css";
 
 export const Welcome: React.FC = () => {
     return (

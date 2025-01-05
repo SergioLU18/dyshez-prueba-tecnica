@@ -1,7 +1,7 @@
-/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/login/login.module.css ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************/
-.login_card__bNF89 {
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/login/component.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+.component_card__y4U2P {
     box-shadow: 0px 8px 28px 0px rgba(0, 0, 0, 0.2);
     padding: 32px;
     width: 400px;
@@ -12,16 +12,16 @@
     justify-content: space-between;
 }
 
-.login_card__bNF89.login_signup__I4__G {
+.component_card__y4U2P.component_signup__LE_i4 {
     width: 100%;
 }
 
-.login_card__bNF89.login_forgot-password__pJY65 {
+.component_card__y4U2P.component_forgot-password__LqVVF {
     justify-content: start;
     gap: 36px;
 }
 
-.login_header__IrnkR {
+.component_header__5qB63 {
     display: flex;
     flex-direction: column;
     font-size: 24px;
@@ -30,26 +30,26 @@
     container-type: inline-size;
 }
 
-.login_header-actions__USFB7 {
+.component_header-actions__g6sLn {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.login_button__k_6Aa {
+.component_button__VD3cM {
     all: unset;
     cursor: pointer;
     color: #A6A6A6;
 }
 
-.login_button-active__8VtXk {
+.component_button-active__mSqs6 {
     all: unset;
     cursor: pointer;
     color: #0C0C0C;
     transition: all 0.3s ease;
 }
 
-.login_header-actions-underline__ZwwBu {
+.component_header-actions-underline__6MkOr {
     height: 4px;
     background-color: #000000;
     /* transition: transform 0.3s ease; */
@@ -57,11 +57,11 @@
 
 }
   
-.login_header-actions-underline__ZwwBu.login_move-right__zOjAs {
+.component_header-actions-underline__6MkOr.component_move-right__yM_fB {
     transform: translateX(calc(100cqw - 100%));
 }
 
-.login_instruction__bbf1B {
+.component_instruction__ZM2V_ {
     color: #0C0C0C;
     font-size: 16px;
     font-weight: 600;
@@ -69,13 +69,13 @@
     margin-top: 24px;
 }
 
-.login_login-inputs__LSjae {
+.component_login-inputs__y1EEu {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.login_input-container__AEwSq {
+.component_input-container__uG2AR {
     border: #E7E7E9D9 2px solid;
     padding: 13px 20px;
     border-radius: 108px;
@@ -85,7 +85,7 @@
     align-items: center;
 }
 
-.login_input__COfDs {
+.component_input__9ItqQ {
     all: unset;
     caret-color: #e3036f; 
     color: #0C0C0C;
@@ -93,26 +93,26 @@
     text-align: left;
 }
 
-.login_input__COfDs::placeholder {
+.component_input__9ItqQ::placeholder {
     color: #747474;
     font-size: 14px;
     line-height: 16px;
     font-weight: 500;
 }
 
-.login_login-form__rW_Jy {
+.component_login-form__Eohzz {
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-.login_login-button-container__tJAr0 {
+.component_login-button-container__Z5Iq8 {
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-.login_login-button__4B0gE {
+.component_login-button__vQ8gZ {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -129,26 +129,26 @@
     margin: auto;
 }
 
-.login_login-button__4B0gE.login_disabled__ePK_s {
+.component_login-button__vQ8gZ.component_disabled___Sugm {
     opacity: 50%;
     cursor: not-allowed;
 }
 
-.login_forgot-password__pJY65 {
+.component_forgot-password__LqVVF {
     color: #797979;
     font-size: 13px;
     text-align: center;
     font-weight: 500;
 }
 
-.login_forgot-password__pJY65 > p {
+.component_forgot-password__LqVVF > p {
     cursor: pointer;
     display: inline;
     color: #e3036f;
     text-decoration: underline;
 }
 
-.login_forgot-password-message__2CwX4 {
+.component_forgot-password-message__Oxuls {
     color: #0C0C0C;
     font-size: 18px;
     font-weight: 700;
@@ -158,20 +158,20 @@
     gap: 8px;
 }
 
-.login_forgot-password-message__2CwX4 > p {
+.component_forgot-password-message__Oxuls > p {
     color: #797979;
     font-size: 14px;
     font-weight: 500;
 }
 
 
-.login_login-socials__ErU2Q {
+.component_login-socials__ugSPt {
     display: flex;
     flex-direction: row;
     gap: 16px;
 }
 
-.login_login-socials-button__P1BEt {
+.component_login-socials-button__jWR7l {
     background-color: #F4F4F4;
     padding: 14px 24px;
     border-radius: 100px;
@@ -181,31 +181,31 @@
     width: 100%;
 }
 
-.login_login-error-message__toSk8 {
+.component_login-error-message__bP_PF {
     color: #FF0000;
     font-size: 12px;
     font-weight: 500;
     text-align: center;
 }
-/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/welcome/welcome.module.css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************/
-.welcome_main__VCn8w {
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/welcome/component.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+.component_main__XiA4D {
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-.welcome_welcome__wjro0 {
+.component_welcome__cRISI {
     color: #e3036f;
     font-weight: 700;
     font-size: 18px;
     line-height: 20px;
 }
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/pageContainer/pageContainer.module.css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************/
-.pageContainer_container__jD4h6 {
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/pageContainer/component.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+.component_container__pUVxA {
     --gray-rgb: 0, 0, 0;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
@@ -223,7 +223,7 @@
   }
   
   @media (prefers-color-scheme: dark) {
-    .pageContainer_container__jD4h6 {
+    .component_container__pUVxA {
       --gray-rgb: 255, 255, 255;
       --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
       --gray-alpha-100: rgba(var(--gray-rgb), 0.06);

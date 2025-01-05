@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from "./login.module.css";
+import styles from "./component.module.css";
 import Image from "next/image";
 import { login, resetPassword } from './actions';
 import { ThirdPartyLogin, thirdPartyLogins } from './constants';

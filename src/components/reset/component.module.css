@@ -1,0 +1,26 @@
+.card {
+    box-shadow: 0px 8px 28px 0px rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: width 0.3s ease;
+    justify-content: space-between;
+}
+
+.reset-password-message {
+    color: #0C0C0C;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.reset-password-message > p {
+    color: #797979;
+    font-size: 14px;
+    font-weight: 500;
+}

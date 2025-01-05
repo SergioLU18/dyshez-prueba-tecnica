@@ -3,6 +3,7 @@ import styles from "./component.module.css";
 import Image from "next/image";
 import { login, resetPassword } from './actions';
 import { ThirdPartyLogin, thirdPartyLogins } from './constants';
+import { Button } from '../button';
 
 export const Login: React.FC = () => {
 
@@ -71,7 +72,7 @@ export const Login: React.FC = () => {
         }));
     };
         
-    const actionButtonDisabled = loading || !userFormData.email || (!forgotPassword && !userFormData.password);
+    const submitButtonDisabled = loading || !userFormData.email || (!forgotPassword && !userFormData.password);
     
     const showThirdPartyLogins = !forgotPassword && !resetSent;
     
@@ -134,16 +135,7 @@ export const Login: React.FC = () => {
                     {!forgotPassword && <p className={styles["login-error-message"]}>{submitError}</p>}
                 </div>
                 <div className={styles["login-button-container"]}>
-                    <div onClick={handleCustomSubmit} className={`${styles["login-button"]} ${actionButtonDisabled ? styles["disabled"] : ""}`}>
-                        <p>Continue</p>
-                        <Image
-                            src="/arrow-right.svg"
-                            alt="login icon"
-                            width={18}
-                            height={18}
-                            priority
-                        />
-                    </div>
+                    <Button primaryAction={handleCustomSubmit} label="Continue" disabled={submitButtonDisabled} />
                     <div className={styles["forgot-password"]}>
                         {!forgotPassword ? "Forgot your password? " : "Remembered your password? "}
                         <p onClick={toggleForgotPassword}>

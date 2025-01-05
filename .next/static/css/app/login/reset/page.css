@@ -28,6 +28,59 @@
       --button-secondary-hover: #1a1a1a;
     }
   }
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/reset/component.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+.component_card__dJ9P1 {
+    box-shadow: 0px 8px 28px 0px rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: width 0.3s ease;
+    justify-content: space-between;
+}
+
+.component_reset-password-message__cv5ah {
+    color: #0C0C0C;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.component_reset-password-message__cv5ah > p {
+    color: #797979;
+    font-size: 14px;
+    font-weight: 500;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/button/component.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+.component_button__j_bcV {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: #e3036f;
+    color: #ffffff;
+    padding: 14px 24px;
+    gap: 6px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: auto;
+}
+
+.component_button__j_bcV.component_disabled__E5RgY {
+    opacity: 50%;
+    cursor: not-allowed;
+}
 /*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/welcome/component.module.css ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************/

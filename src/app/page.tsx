@@ -1,12 +1,32 @@
+'use client'
 import { redirect } from 'next/navigation';
+import * as React from 'react';
+import { logout, getUserEmail } from './actions';
 
-export default function Home() {
 
-  redirect('/login');
+const Home: React.FC = () => {
+
+  const [email, setEmail] = React.useState("")
+
+  React.useEffect(() => {
+    getUserEmail().then((data) => {
+      if (!data || typeof data !== 'string') {
+        redirect('/login')
+      }
+      setEmail(data);
+    })
+  }, [])
 
   return (
     <div>
-
+      <p>
+      Hello {email}
+      </p>
+      <button onClick={logout}>
+        Logout
+      </button>
     </div>
-  );
+    )
 }
+
+export default Home;

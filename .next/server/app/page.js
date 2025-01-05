@@ -67,6 +67,72 @@ module.exports = require("next/dist/server/app-render/work-unit-async-storage.ex
 
 /***/ }),
 
+/***/ "buffer":
+/*!*************************!*\
+  !*** external "buffer" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("buffer");
+
+/***/ }),
+
+/***/ "crypto":
+/*!*************************!*\
+  !*** external "crypto" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("crypto");
+
+/***/ }),
+
+/***/ "events":
+/*!*************************!*\
+  !*** external "events" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("events");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http");
+
+/***/ }),
+
+/***/ "https":
+/*!************************!*\
+  !*** external "https" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("https");
+
+/***/ }),
+
+/***/ "net":
+/*!**********************!*\
+  !*** external "net" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("net");
+
+/***/ }),
+
 /***/ "path":
 /*!***********************!*\
   !*** external "path" ***!
@@ -78,6 +144,61 @@ module.exports = require("path");
 
 /***/ }),
 
+/***/ "punycode":
+/*!***************************!*\
+  !*** external "punycode" ***!
+  \***************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("punycode");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "tls":
+/*!**********************!*\
+  !*** external "tls" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("tls");
+
+/***/ }),
+
+/***/ "url":
+/*!**********************!*\
+  !*** external "url" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("url");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
+
+/***/ }),
+
 /***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D! ***!
@@ -86,6 +207,17 @@ module.exports = require("path");
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   GlobalError: () => (/* reexport default from dynamic */ next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2___default.a),\n/* harmony export */   __next_app__: () => (/* binding */ __next_app__),\n/* harmony export */   pages: () => (/* binding */ pages),\n/* harmony export */   routeModule: () => (/* binding */ routeModule),\n/* harmony export */   tree: () => (/* binding */ tree)\n/* harmony export */ });\n/* harmony import */ var next_dist_server_route_modules_app_page_module_compiled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/server/route-modules/app-page/module.compiled */ \"(ssr)/./node_modules/next/dist/server/route-modules/app-page/module.compiled.js?91d2\");\n/* harmony import */ var next_dist_server_route_modules_app_page_module_compiled__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_route_modules_app_page_module_compiled__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dist_server_route_kind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dist/server/route-kind */ \"(rsc)/./node_modules/next/dist/server/route-kind.js\");\n/* harmony import */ var next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dist/client/components/error-boundary */ \"(rsc)/./node_modules/next/dist/client/components/error-boundary.js\");\n/* harmony import */ var next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/dist/server/app-render/entry-base */ \"(rsc)/./node_modules/next/dist/server/app-render/entry-base.js\");\n/* harmony import */ var next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};\n/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__) if([\"default\",\"tree\",\"pages\",\"GlobalError\",\"__next_app__\",\"routeModule\"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__[__WEBPACK_IMPORT_KEY__]\n/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);\nconst module0 = () => Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./src/app/layout.tsx */ \"(rsc)/./src/app/layout.tsx\"));\nconst module1 = () => Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! next/dist/client/components/not-found-error */ \"(rsc)/./node_modules/next/dist/client/components/not-found-error.js\", 23));\nconst module2 = () => Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! next/dist/client/components/forbidden-error */ \"(rsc)/./node_modules/next/dist/client/components/forbidden-error.js\", 23));\nconst module3 = () => Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! next/dist/client/components/unauthorized-error */ \"(rsc)/./node_modules/next/dist/client/components/unauthorized-error.js\", 23));\nconst page4 = () => Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./src/app/page.tsx */ \"(rsc)/./src/app/page.tsx\"));\n\n\n// We inject the tree and pages here so that we can use them in the route\n// module.\nconst tree = {\n        children: [\n        '',\n        {\n        children: ['__PAGE__', {}, {\n          page: [page4, \"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/page.tsx\"],\n          \n        }]\n      },\n        {\n        'layout': [module0, \"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/layout.tsx\"],\n'not-found': [module1, \"next/dist/client/components/not-found-error\"],\n'forbidden': [module2, \"next/dist/client/components/forbidden-error\"],\n'unauthorized': [module3, \"next/dist/client/components/unauthorized-error\"],\n        \n      }\n      ]\n      }.children;\nconst pages = [\"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/page.tsx\"];\n\n\nconst __next_app_require__ = __webpack_require__\nconst __next_app_load_chunk__ = () => Promise.resolve()\nconst __next_app__ = {\n    require: __next_app_require__,\n    loadChunk: __next_app_load_chunk__\n};\n\n// Create and export the route module that will be consumed.\nconst routeModule = new next_dist_server_route_modules_app_page_module_compiled__WEBPACK_IMPORTED_MODULE_0__.AppPageRouteModule({\n    definition: {\n        kind: next_dist_server_route_kind__WEBPACK_IMPORTED_MODULE_1__.RouteKind.APP_PAGE,\n        page: \"/page\",\n        pathname: \"/\",\n        // The following aren't used in production.\n        bundlePath: '',\n        filename: '',\n        appPaths: []\n    },\n    userland: {\n        loaderTree: tree\n    }\n});\n\n//# sourceMappingURL=app-page.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWFwcC1sb2FkZXIvaW5kZXguanM/bmFtZT1hcHAlMkZwYWdlJnBhZ2U9JTJGcGFnZSZhcHBQYXRocz0lMkZwYWdlJnBhZ2VQYXRoPXByaXZhdGUtbmV4dC1hcHAtZGlyJTJGcGFnZS50c3gmYXBwRGlyPSUyRlVzZXJzJTJGc2VyZ2lvJTJGRG9jdW1lbnRzJTJGRHlzaGV6JTJGZHlzaGV6LXBydWViYS10ZWNuaWNhJTJGc3JjJTJGYXBwJnBhZ2VFeHRlbnNpb25zPXRzeCZwYWdlRXh0ZW5zaW9ucz10cyZwYWdlRXh0ZW5zaW9ucz1qc3gmcGFnZUV4dGVuc2lvbnM9anMmcm9vdERpcj0lMkZVc2VycyUyRnNlcmdpbyUyRkRvY3VtZW50cyUyRkR5c2hleiUyRmR5c2hlei1wcnVlYmEtdGVjbmljYSZpc0Rldj10cnVlJnRzY29uZmlnUGF0aD10c2NvbmZpZy5qc29uJmJhc2VQYXRoPSZhc3NldFByZWZpeD0mbmV4dENvbmZpZ091dHB1dD0mcHJlZmVycmVkUmVnaW9uPSZtaWRkbGV3YXJlQ29uZmlnPWUzMCUzRCEiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsc0JBQXNCLG9KQUE0RztBQUNsSSxzQkFBc0IsME5BQWdGO0FBQ3RHLHNCQUFzQiwwTkFBZ0Y7QUFDdEcsc0JBQXNCLGdPQUFtRjtBQUN6RyxvQkFBb0IsZ0pBQTBHO0FBRzVIO0FBQ3NEO0FBQ3hEO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLGlDQUFpQztBQUNqQztBQUNBO0FBQ0EsU0FBUztBQUNULE9BQU87QUFDUDtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsT0FBTztBQUNQO0FBQ3VCO0FBQzZEO0FBQ3BGLDZCQUE2QixtQkFBbUI7QUFDaEQ7QUFDTztBQUNQO0FBQ0E7QUFDQTtBQUN1RDtBQUN2RDtBQUNPLHdCQUF3Qix1R0FBa0I7QUFDakQ7QUFDQSxjQUFjLGtFQUFTO0FBQ3ZCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLEtBQUs7QUFDTDtBQUNBO0FBQ0E7QUFDQSxDQUFDOztBQUVEIiwic291cmNlcyI6WyIiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgbW9kdWxlMCA9ICgpID0+IGltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL1VzZXJzL3Nlcmdpby9Eb2N1bWVudHMvRHlzaGV6L2R5c2hlei1wcnVlYmEtdGVjbmljYS9zcmMvYXBwL2xheW91dC50c3hcIik7XG5jb25zdCBtb2R1bGUxID0gKCkgPT4gaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCJuZXh0L2Rpc3QvY2xpZW50L2NvbXBvbmVudHMvbm90LWZvdW5kLWVycm9yXCIpO1xuY29uc3QgbW9kdWxlMiA9ICgpID0+IGltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwibmV4dC9kaXN0L2NsaWVudC9jb21wb25lbnRzL2ZvcmJpZGRlbi1lcnJvclwiKTtcbmNvbnN0IG1vZHVsZTMgPSAoKSA9PiBpbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiAqLyBcIm5leHQvZGlzdC9jbGllbnQvY29tcG9uZW50cy91bmF1dGhvcml6ZWQtZXJyb3JcIik7XG5jb25zdCBwYWdlNCA9ICgpID0+IGltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL1VzZXJzL3Nlcmdpby9Eb2N1bWVudHMvRHlzaGV6L2R5c2hlei1wcnVlYmEtdGVjbmljYS9zcmMvYXBwL3BhZ2UudHN4XCIpO1xuaW1wb3J0IHsgQXBwUGFnZVJvdXRlTW9kdWxlIH0gZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvcm91dGUtbW9kdWxlcy9hcHAtcGFnZS9tb2R1bGUuY29tcGlsZWRcIiB3aXRoIHtcbiAgICAndHVyYm9wYWNrLXRyYW5zaXRpb24nOiAnbmV4dC1zc3InXG59O1xuaW1wb3J0IHsgUm91dGVLaW5kIH0gZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvcm91dGUta2luZFwiO1xuLy8gV2UgaW5qZWN0IHRoZSB0cmVlIGFuZCBwYWdlcyBoZXJlIHNvIHRoYXQgd2UgY2FuIHVzZSB0aGVtIGluIHRoZSByb3V0ZVxuLy8gbW9kdWxlLlxuY29uc3QgdHJlZSA9IHtcbiAgICAgICAgY2hpbGRyZW46IFtcbiAgICAgICAgJycsXG4gICAgICAgIHtcbiAgICAgICAgY2hpbGRyZW46IFsnX19QQUdFX18nLCB7fSwge1xuICAgICAgICAgIHBhZ2U6IFtwYWdlNCwgXCIvVXNlcnMvc2VyZ2lvL0RvY3VtZW50cy9EeXNoZXovZHlzaGV6LXBydWViYS10ZWNuaWNhL3NyYy9hcHAvcGFnZS50c3hcIl0sXG4gICAgICAgICAgXG4gICAgICAgIH1dXG4gICAgICB9LFxuICAgICAgICB7XG4gICAgICAgICdsYXlvdXQnOiBbbW9kdWxlMCwgXCIvVXNlcnMvc2VyZ2lvL0RvY3VtZW50cy9EeXNoZXovZHlzaGV6LXBydWViYS10ZWNuaWNhL3NyYy9hcHAvbGF5b3V0LnRzeFwiXSxcbidub3QtZm91bmQnOiBbbW9kdWxlMSwgXCJuZXh0L2Rpc3QvY2xpZW50L2NvbXBvbmVudHMvbm90LWZvdW5kLWVycm9yXCJdLFxuJ2ZvcmJpZGRlbic6IFttb2R1bGUyLCBcIm5leHQvZGlzdC9jbGllbnQvY29tcG9uZW50cy9mb3JiaWRkZW4tZXJyb3JcIl0sXG4ndW5hdXRob3JpemVkJzogW21vZHVsZTMsIFwibmV4dC9kaXN0L2NsaWVudC9jb21wb25lbnRzL3VuYXV0aG9yaXplZC1lcnJvclwiXSxcbiAgICAgICAgXG4gICAgICB9XG4gICAgICBdXG4gICAgICB9LmNoaWxkcmVuO1xuY29uc3QgcGFnZXMgPSBbXCIvVXNlcnMvc2VyZ2lvL0RvY3VtZW50cy9EeXNoZXovZHlzaGV6LXBydWViYS10ZWNuaWNhL3NyYy9hcHAvcGFnZS50c3hcIl07XG5leHBvcnQgeyB0cmVlLCBwYWdlcyB9O1xuZXhwb3J0IHsgZGVmYXVsdCBhcyBHbG9iYWxFcnJvciB9IGZyb20gXCJuZXh0L2Rpc3QvY2xpZW50L2NvbXBvbmVudHMvZXJyb3ItYm91bmRhcnlcIjtcbmNvbnN0IF9fbmV4dF9hcHBfcmVxdWlyZV9fID0gX193ZWJwYWNrX3JlcXVpcmVfX1xuY29uc3QgX19uZXh0X2FwcF9sb2FkX2NodW5rX18gPSAoKSA9PiBQcm9taXNlLnJlc29sdmUoKVxuZXhwb3J0IGNvbnN0IF9fbmV4dF9hcHBfXyA9IHtcbiAgICByZXF1aXJlOiBfX25leHRfYXBwX3JlcXVpcmVfXyxcbiAgICBsb2FkQ2h1bms6IF9fbmV4dF9hcHBfbG9hZF9jaHVua19fXG59O1xuZXhwb3J0ICogZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvYXBwLXJlbmRlci9lbnRyeS1iYXNlXCI7XG4vLyBDcmVhdGUgYW5kIGV4cG9ydCB0aGUgcm91dGUgbW9kdWxlIHRoYXQgd2lsbCBiZSBjb25zdW1lZC5cbmV4cG9ydCBjb25zdCByb3V0ZU1vZHVsZSA9IG5ldyBBcHBQYWdlUm91dGVNb2R1bGUoe1xuICAgIGRlZmluaXRpb246IHtcbiAgICAgICAga2luZDogUm91dGVLaW5kLkFQUF9QQUdFLFxuICAgICAgICBwYWdlOiBcIi9wYWdlXCIsXG4gICAgICAgIHBhdGhuYW1lOiBcIi9cIixcbiAgICAgICAgLy8gVGhlIGZvbGxvd2luZyBhcmVuJ3QgdXNlZCBpbiBwcm9kdWN0aW9uLlxuICAgICAgICBidW5kbGVQYXRoOiAnJyxcbiAgICAgICAgZmlsZW5hbWU6ICcnLFxuICAgICAgICBhcHBQYXRoczogW11cbiAgICB9LFxuICAgIHVzZXJsYW5kOiB7XG4gICAgICAgIGxvYWRlclRyZWU6IHRyZWVcbiAgICB9XG59KTtcblxuLy8jIHNvdXJjZU1hcHBpbmdVUkw9YXBwLXBhZ2UuanMubWFwIl0sIm5hbWVzIjpbXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!\n");
+
+/***/ }),
+
+/***/ "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Factions.ts%22%2C%5B%5B%2200a81c41034bf039a1b18e3ae0567d75d4ec815ce1%22%2C%22getUserEmail%22%5D%2C%5B%2200e2f932e89b08ec200278dd329d3a9fbf4259617a%22%2C%22logout%22%5D%5D%5D%5D&__client_imported__=true!":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Factions.ts%22%2C%5B%5B%2200a81c41034bf039a1b18e3ae0567d75d4ec815ce1%22%2C%22getUserEmail%22%5D%2C%5B%2200e2f932e89b08ec200278dd329d3a9fbf4259617a%22%2C%22logout%22%5D%5D%5D%5D&__client_imported__=true! ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"00a81c41034bf039a1b18e3ae0567d75d4ec815ce1\": () => (/* reexport safe */ _Users_sergio_Documents_Dyshez_dyshez_prueba_tecnica_src_app_actions_ts__WEBPACK_IMPORTED_MODULE_0__.getUserEmail),\n/* harmony export */   \"00e2f932e89b08ec200278dd329d3a9fbf4259617a\": () => (/* reexport safe */ _Users_sergio_Documents_Dyshez_dyshez_prueba_tecnica_src_app_actions_ts__WEBPACK_IMPORTED_MODULE_0__.logout)\n/* harmony export */ });\n/* harmony import */ var _Users_sergio_Documents_Dyshez_dyshez_prueba_tecnica_src_app_actions_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/app/actions.ts */ \"(action-browser)/./src/app/actions.ts\");\n\n\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFjdGlvbi1icm93c2VyKS8uL25vZGVfbW9kdWxlcy9uZXh0L2Rpc3QvYnVpbGQvd2VicGFjay9sb2FkZXJzL25leHQtZmxpZ2h0LWFjdGlvbi1lbnRyeS1sb2FkZXIuanM/YWN0aW9ucz0lNUIlNUIlMjIlMkZVc2VycyUyRnNlcmdpbyUyRkRvY3VtZW50cyUyRkR5c2hleiUyRmR5c2hlei1wcnVlYmEtdGVjbmljYSUyRnNyYyUyRmFwcCUyRmFjdGlvbnMudHMlMjIlMkMlNUIlNUIlMjIwMGE4MWM0MTAzNGJmMDM5YTFiMThlM2FlMDU2N2Q3NWQ0ZWM4MTVjZTElMjIlMkMlMjJnZXRVc2VyRW1haWwlMjIlNUQlMkMlNUIlMjIwMGUyZjkzMmU4OWIwOGVjMjAwMjc4ZGQzMjlkM2E5ZmJmNDI1OTYxN2ElMjIlMkMlMjJsb2dvdXQlMjIlNUQlNUQlNUQlNUQmX19jbGllbnRfaW1wb3J0ZWRfXz10cnVlISIsIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQ3NKO0FBQ04iLCJzb3VyY2VzIjpbIiJdLCJzb3VyY2VzQ29udGVudCI6WyJcbmV4cG9ydCB7IGdldFVzZXJFbWFpbCBhcyBcIjAwYTgxYzQxMDM0YmYwMzlhMWIxOGUzYWUwNTY3ZDc1ZDRlYzgxNWNlMVwiIH0gZnJvbSBcIi9Vc2Vycy9zZXJnaW8vRG9jdW1lbnRzL0R5c2hlei9keXNoZXotcHJ1ZWJhLXRlY25pY2Evc3JjL2FwcC9hY3Rpb25zLnRzXCJcbmV4cG9ydCB7IGxvZ291dCBhcyBcIjAwZTJmOTMyZTg5YjA4ZWMyMDAyNzhkZDMyOWQzYTlmYmY0MjU5NjE3YVwiIH0gZnJvbSBcIi9Vc2Vycy9zZXJnaW8vRG9jdW1lbnRzL0R5c2hlei9keXNoZXotcHJ1ZWJhLXRlY25pY2Evc3JjL2FwcC9hY3Rpb25zLnRzXCJcbiJdLCJuYW1lcyI6W10sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Factions.ts%22%2C%5B%5B%2200a81c41034bf039a1b18e3ae0567d75d4ec815ce1%22%2C%22getUserEmail%22%5D%2C%5B%2200e2f932e89b08ec200278dd329d3a9fbf4259617a%22%2C%22logout%22%5D%5D%5D%5D&__client_imported__=true!\n");
 
 /***/ }),
 
@@ -129,23 +261,45 @@ eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__w
 
 /***/ }),
 
-/***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?server=true!":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?server=true! ***!
-  \******************************************************************************************************/
-/***/ (() => {
+/***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true!":
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true! ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-
+eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./src/app/page.tsx */ \"(rsc)/./src/app/page.tsx\"));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRlVzZXJzJTJGc2VyZ2lvJTJGRG9jdW1lbnRzJTJGRHlzaGV6JTJGZHlzaGV6LXBydWViYS10ZWNuaWNhJTJGc3JjJTJGYXBwJTJGcGFnZS50c3glMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0Qmc2VydmVyPXRydWUhIiwibWFwcGluZ3MiOiJBQUFBLGdKQUEwRyIsInNvdXJjZXMiOlsiIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL1VzZXJzL3Nlcmdpby9Eb2N1bWVudHMvRHlzaGV6L2R5c2hlei1wcnVlYmEtdGVjbmljYS9zcmMvYXBwL3BhZ2UudHN4XCIpO1xuIl0sIm5hbWVzIjpbXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true!\n");
 
 /***/ }),
 
-/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?server=true!":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?server=true! ***!
-  \******************************************************************************************************/
-/***/ (() => {
+/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true!":
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true! ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./src/app/page.tsx */ \"(ssr)/./src/app/page.tsx\"));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRlVzZXJzJTJGc2VyZ2lvJTJGRG9jdW1lbnRzJTJGRHlzaGV6JTJGZHlzaGV6LXBydWViYS10ZWNuaWNhJTJGc3JjJTJGYXBwJTJGcGFnZS50c3glMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0Qmc2VydmVyPXRydWUhIiwibWFwcGluZ3MiOiJBQUFBLGdKQUEwRyIsInNvdXJjZXMiOlsiIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL1VzZXJzL3Nlcmdpby9Eb2N1bWVudHMvRHlzaGV6L2R5c2hlei1wcnVlYmEtdGVjbmljYS9zcmMvYXBwL3BhZ2UudHN4XCIpO1xuIl0sIm5hbWVzIjpbXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true!\n");
 
+/***/ }),
+
+/***/ "(ssr)/./src/app/actions.ts":
+/*!****************************!*\
+  !*** ./src/app/actions.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   getUserEmail: () => (/* binding */ getUserEmail),\n/* harmony export */   logout: () => (/* binding */ logout)\n/* harmony export */ });\n/* harmony import */ var private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! private-next-rsc-action-client-wrapper */ \"(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/action-client-wrapper.js\");\n/* harmony import */ var private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0__);\n/* __next_internal_action_entry_do_not_use__ {\"00a81c41034bf039a1b18e3ae0567d75d4ec815ce1\":\"getUserEmail\",\"00e2f932e89b08ec200278dd329d3a9fbf4259617a\":\"logout\"} */ \nvar getUserEmail = /*#__PURE__*/ (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0__.createServerReference)(\"00a81c41034bf039a1b18e3ae0567d75d4ec815ce1\", private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0__.callServer, void 0, private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0__.findSourceMapURL, \"getUserEmail\");\nvar logout = /*#__PURE__*/ (0,private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0__.createServerReference)(\"00e2f932e89b08ec200278dd329d3a9fbf4259617a\", private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0__.callServer, void 0, private_next_rsc_action_client_wrapper__WEBPACK_IMPORTED_MODULE_0__.findSourceMapURL, \"logout\");\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9zcmMvYXBwL2FjdGlvbnMudHMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7SUFLc0JBLDZCQUFBQSw2RkFBQUEsK0NBQUFBLDhFQUFBQSxVQUFBQSxvRkFBQUE7SUFhQUMsdUJBQUFBLDZGQUFBQSwrQ0FBQUEsOEVBQUFBLFVBQUFBLG9GQUFBQSIsInNvdXJjZXMiOlsiL1VzZXJzL3Nlcmdpby9Eb2N1bWVudHMvRHlzaGV6L2R5c2hlei1wcnVlYmEtdGVjbmljYS9zcmMvYXBwL2FjdGlvbnMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBzZXJ2ZXInXG5cbmltcG9ydCB7IGNyZWF0ZUNsaWVudCB9IGZyb20gJy4uLy4uL3V0aWxzL3N1cGFiYXNlL3NlcnZlcidcbmltcG9ydCB7IHJlZGlyZWN0IH0gZnJvbSAnbmV4dC9uYXZpZ2F0aW9uJ1xuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gZ2V0VXNlckVtYWlsKCkge1xuICAgIFxuICAgIGNvbnN0IHN1cGFiYXNlID0gYXdhaXQgY3JlYXRlQ2xpZW50KClcblxuICAgIGNvbnN0IHsgZGF0YSwgZXJyb3IgfSA9IGF3YWl0IHN1cGFiYXNlLmF1dGguZ2V0VXNlcigpXG5cbiAgICBpZiAoZXJyb3IgfHwgIWRhdGE/LnVzZXIpIHtcbiAgICAgICAgcmV0dXJuIGVycm9yXG4gICAgfVxuXG4gICAgcmV0dXJuIGRhdGEudXNlci5lbWFpbFxufVxuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gbG9nb3V0KCkge1xuXG4gICAgY29uc3Qgc3VwYWJhc2UgPSBhd2FpdCBjcmVhdGVDbGllbnQoKVxuXG4gICAgLy8gdHlwZS1jYXN0aW5nIGhlcmUgZm9yIGNvbnZlbmllbmNlXG4gICAgLy8gaW4gcHJhY3RpY2UsIHlvdSBzaG91bGQgdmFsaWRhdGUgeW91ciBpbnB1dHNcblxuICAgIGNvbnN0IHsgZXJyb3IgfSA9IGF3YWl0IHN1cGFiYXNlLmF1dGguc2lnbk91dCgpXG5cbiAgICBpZiAoZXJyb3IpIHtcbiAgICAgICAgcmV0dXJuIGVycm9yXG4gICAgfVxuXG4gICAgcmVkaXJlY3QoJy9sb2dpbicpXG59Il0sIm5hbWVzIjpbImdldFVzZXJFbWFpbCIsImxvZ291dCJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./src/app/actions.ts\n");
+
+/***/ }),
+
+/***/ "(ssr)/./src/app/page.tsx":
+/*!**************************!*\
+  !*** ./src/app/page.tsx ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(ssr)/./node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/navigation */ \"(ssr)/./node_modules/next/dist/api/navigation.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ \"(ssr)/./node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions */ \"(ssr)/./src/app/actions.ts\");\n/* __next_internal_client_entry_do_not_use__ default auto */ \n\n\n\nconst Home = ()=>{\n    const [email, setEmail] = react__WEBPACK_IMPORTED_MODULE_2__.useState(\"\");\n    react__WEBPACK_IMPORTED_MODULE_2__.useEffect({\n        \"Home.useEffect\": ()=>{\n            (0,_actions__WEBPACK_IMPORTED_MODULE_3__.getUserEmail)().then({\n                \"Home.useEffect\": (data)=>{\n                    if (!data || typeof data !== 'string') {\n                        (0,next_navigation__WEBPACK_IMPORTED_MODULE_1__.redirect)('/login');\n                    }\n                    setEmail(data);\n                }\n            }[\"Home.useEffect\"]);\n        }\n    }[\"Home.useEffect\"], []);\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                children: [\n                    \"Hello \",\n                    email\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/page.tsx\",\n                lineNumber: 22,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"button\", {\n                onClick: _actions__WEBPACK_IMPORTED_MODULE_3__.logout,\n                children: \"Logout\"\n            }, void 0, false, {\n                fileName: \"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/page.tsx\",\n                lineNumber: 25,\n                columnNumber: 7\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/page.tsx\",\n        lineNumber: 21,\n        columnNumber: 5\n    }, undefined);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9zcmMvYXBwL3BhZ2UudHN4IiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7O0FBQzJDO0FBQ1o7QUFDa0I7QUFHakQsTUFBTUksT0FBaUI7SUFFckIsTUFBTSxDQUFDQyxPQUFPQyxTQUFTLEdBQUdMLDJDQUFjLENBQUM7SUFFekNBLDRDQUFlOzBCQUFDO1lBQ2RFLHNEQUFZQSxHQUFHTSxJQUFJO2tDQUFDLENBQUNDO29CQUNuQixJQUFJLENBQUNBLFFBQVEsT0FBT0EsU0FBUyxVQUFVO3dCQUNyQ1YseURBQVFBLENBQUM7b0JBQ1g7b0JBQ0FNLFNBQVNJO2dCQUNYOztRQUNGO3lCQUFHLEVBQUU7SUFFTCxxQkFDRSw4REFBQ0M7OzBCQUNDLDhEQUFDQzs7b0JBQUU7b0JBQ0lQOzs7Ozs7OzBCQUVQLDhEQUFDUTtnQkFBT0MsU0FBU1osNENBQU1BOzBCQUFFOzs7Ozs7Ozs7Ozs7QUFLL0I7QUFFQSxpRUFBZUUsSUFBSUEsRUFBQyIsInNvdXJjZXMiOlsiL1VzZXJzL3Nlcmdpby9Eb2N1bWVudHMvRHlzaGV6L2R5c2hlei1wcnVlYmEtdGVjbmljYS9zcmMvYXBwL3BhZ2UudHN4Il0sInNvdXJjZXNDb250ZW50IjpbIid1c2UgY2xpZW50J1xuaW1wb3J0IHsgcmVkaXJlY3QgfSBmcm9tICduZXh0L25hdmlnYXRpb24nO1xuaW1wb3J0ICogYXMgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgbG9nb3V0LCBnZXRVc2VyRW1haWwgfSBmcm9tICcuL2FjdGlvbnMnO1xuXG5cbmNvbnN0IEhvbWU6IFJlYWN0LkZDID0gKCkgPT4ge1xuXG4gIGNvbnN0IFtlbWFpbCwgc2V0RW1haWxdID0gUmVhY3QudXNlU3RhdGUoXCJcIilcblxuICBSZWFjdC51c2VFZmZlY3QoKCkgPT4ge1xuICAgIGdldFVzZXJFbWFpbCgpLnRoZW4oKGRhdGEpID0+IHtcbiAgICAgIGlmICghZGF0YSB8fCB0eXBlb2YgZGF0YSAhPT0gJ3N0cmluZycpIHtcbiAgICAgICAgcmVkaXJlY3QoJy9sb2dpbicpXG4gICAgICB9XG4gICAgICBzZXRFbWFpbChkYXRhKTtcbiAgICB9KVxuICB9LCBbXSlcblxuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8cD5cbiAgICAgIEhlbGxvIHtlbWFpbH1cbiAgICAgIDwvcD5cbiAgICAgIDxidXR0b24gb25DbGljaz17bG9nb3V0fT5cbiAgICAgICAgTG9nb3V0XG4gICAgICA8L2J1dHRvbj5cbiAgICA8L2Rpdj5cbiAgICApXG59XG5cbmV4cG9ydCBkZWZhdWx0IEhvbWU7XG4iXSwibmFtZXMiOlsicmVkaXJlY3QiLCJSZWFjdCIsImxvZ291dCIsImdldFVzZXJFbWFpbCIsIkhvbWUiLCJlbWFpbCIsInNldEVtYWlsIiwidXNlU3RhdGUiLCJ1c2VFZmZlY3QiLCJ0aGVuIiwiZGF0YSIsImRpdiIsInAiLCJidXR0b24iLCJvbkNsaWNrIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(ssr)/./src/app/page.tsx\n");
 
 /***/ }),
 
@@ -157,6 +311,17 @@ eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__w
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (\"64ca0ed1b3cd\");\nif (false) {}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvYXBwL2dsb2JhbHMuY3NzIiwibWFwcGluZ3MiOiI7Ozs7QUFBQSxpRUFBZSxjQUFjO0FBQzdCLElBQUksS0FBVSxFQUFFLEVBQXVCIiwic291cmNlcyI6WyIvVXNlcnMvc2VyZ2lvL0RvY3VtZW50cy9EeXNoZXovZHlzaGV6LXBydWViYS10ZWNuaWNhL3NyYy9hcHAvZ2xvYmFscy5jc3MiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgXCI2NGNhMGVkMWIzY2RcIlxuaWYgKG1vZHVsZS5ob3QpIHsgbW9kdWxlLmhvdC5hY2NlcHQoKSB9XG4iXSwibmFtZXMiOltdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./src/app/globals.css\n");
+
+/***/ }),
+
+/***/ "(action-browser)/./src/app/actions.ts":
+/*!****************************!*\
+  !*** ./src/app/actions.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   getUserEmail: () => (/* binding */ getUserEmail),\n/* harmony export */   logout: () => (/* binding */ logout)\n/* harmony export */ });\n/* harmony import */ var private_next_rsc_server_reference__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! private-next-rsc-server-reference */ \"(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js\");\n/* harmony import */ var private_next_rsc_action_encryption__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! private-next-rsc-action-encryption */ \"(action-browser)/./node_modules/next/dist/server/app-render/encryption.js\");\n/* harmony import */ var private_next_rsc_action_encryption__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(private_next_rsc_action_encryption__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _utils_supabase_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/supabase/server */ \"(action-browser)/./utils/supabase/server.ts\");\n/* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/navigation */ \"(action-browser)/./node_modules/next/dist/api/navigation.react-server.js\");\n/* harmony import */ var private_next_rsc_action_validate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! private-next-rsc-action-validate */ \"(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/action-validate.js\");\n/* __next_internal_action_entry_do_not_use__ {\"00a81c41034bf039a1b18e3ae0567d75d4ec815ce1\":\"getUserEmail\",\"00e2f932e89b08ec200278dd329d3a9fbf4259617a\":\"logout\"} */ \n\n\n\nasync function /*#__TURBOPACK_DISABLE_EXPORT_MERGING__*/ getUserEmail() {\n    const supabase = await (0,_utils_supabase_server__WEBPACK_IMPORTED_MODULE_2__.createClient)();\n    const { data, error } = await supabase.auth.getUser();\n    if (error || !data?.user) {\n        return error;\n    }\n    return data.user.email;\n}\nasync function /*#__TURBOPACK_DISABLE_EXPORT_MERGING__*/ logout() {\n    const supabase = await (0,_utils_supabase_server__WEBPACK_IMPORTED_MODULE_2__.createClient)();\n    // type-casting here for convenience\n    // in practice, you should validate your inputs\n    const { error } = await supabase.auth.signOut();\n    if (error) {\n        return error;\n    }\n    (0,next_navigation__WEBPACK_IMPORTED_MODULE_3__.redirect)('/login');\n}\n\n(0,private_next_rsc_action_validate__WEBPACK_IMPORTED_MODULE_4__.ensureServerEntryExports)([\n    getUserEmail,\n    logout\n]);\n(0,private_next_rsc_server_reference__WEBPACK_IMPORTED_MODULE_0__.registerServerReference)(getUserEmail, \"00a81c41034bf039a1b18e3ae0567d75d4ec815ce1\", null);\n(0,private_next_rsc_server_reference__WEBPACK_IMPORTED_MODULE_0__.registerServerReference)(logout, \"00e2f932e89b08ec200278dd329d3a9fbf4259617a\", null);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFjdGlvbi1icm93c2VyKS8uL3NyYy9hcHAvYWN0aW9ucy50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7O0FBRTBEO0FBQ2hCO0FBRW5DLGVBQWVFLHVDQUFVLEdBQVZBO0lBRWxCLE1BQU1DLFdBQVcsTUFBTUgsb0VBQVlBO0lBRW5DLE1BQU0sRUFBRUksSUFBSSxFQUFFQyxLQUFLLEVBQUUsR0FBRyxNQUFNRixTQUFTRyxJQUFJLENBQUNDLE9BQU87SUFFbkQsSUFBSUYsU0FBUyxDQUFDRCxNQUFNSSxNQUFNO1FBQ3RCLE9BQU9IO0lBQ1g7SUFFQSxPQUFPRCxLQUFLSSxJQUFJLENBQUNDLEtBQUs7QUFDMUI7QUFFTyxlQUFlQyx1Q0FBSSxHQUFKQTtJQUVsQixNQUFNUCxXQUFXLE1BQU1ILG9FQUFZQTtJQUVuQyxvQ0FBb0M7SUFDcEMsK0NBQStDO0lBRS9DLE1BQU0sRUFBRUssS0FBSyxFQUFFLEdBQUcsTUFBTUYsU0FBU0csSUFBSSxDQUFDSyxPQUFPO0lBRTdDLElBQUlOLE9BQU87UUFDUCxPQUFPQTtJQUNYO0lBRUFKLHlEQUFRQSxDQUFDO0FBQ2I7OztJQTNCc0JDO0lBYUFROztBQWJBUiwwRkFBQUEsQ0FBQUE7QUFhQVEsMEZBQUFBLENBQUFBIiwic291cmNlcyI6WyIvVXNlcnMvc2VyZ2lvL0RvY3VtZW50cy9EeXNoZXovZHlzaGV6LXBydWViYS10ZWNuaWNhL3NyYy9hcHAvYWN0aW9ucy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIndXNlIHNlcnZlcidcblxuaW1wb3J0IHsgY3JlYXRlQ2xpZW50IH0gZnJvbSAnLi4vLi4vdXRpbHMvc3VwYWJhc2Uvc2VydmVyJ1xuaW1wb3J0IHsgcmVkaXJlY3QgfSBmcm9tICduZXh0L25hdmlnYXRpb24nXG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBnZXRVc2VyRW1haWwoKSB7XG4gICAgXG4gICAgY29uc3Qgc3VwYWJhc2UgPSBhd2FpdCBjcmVhdGVDbGllbnQoKVxuXG4gICAgY29uc3QgeyBkYXRhLCBlcnJvciB9ID0gYXdhaXQgc3VwYWJhc2UuYXV0aC5nZXRVc2VyKClcblxuICAgIGlmIChlcnJvciB8fCAhZGF0YT8udXNlcikge1xuICAgICAgICByZXR1cm4gZXJyb3JcbiAgICB9XG5cbiAgICByZXR1cm4gZGF0YS51c2VyLmVtYWlsXG59XG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBsb2dvdXQoKSB7XG5cbiAgICBjb25zdCBzdXBhYmFzZSA9IGF3YWl0IGNyZWF0ZUNsaWVudCgpXG5cbiAgICAvLyB0eXBlLWNhc3RpbmcgaGVyZSBmb3IgY29udmVuaWVuY2VcbiAgICAvLyBpbiBwcmFjdGljZSwgeW91IHNob3VsZCB2YWxpZGF0ZSB5b3VyIGlucHV0c1xuXG4gICAgY29uc3QgeyBlcnJvciB9ID0gYXdhaXQgc3VwYWJhc2UuYXV0aC5zaWduT3V0KClcblxuICAgIGlmIChlcnJvcikge1xuICAgICAgICByZXR1cm4gZXJyb3JcbiAgICB9XG5cbiAgICByZWRpcmVjdCgnL2xvZ2luJylcbn0iXSwibmFtZXMiOlsiY3JlYXRlQ2xpZW50IiwicmVkaXJlY3QiLCJnZXRVc2VyRW1haWwiLCJzdXBhYmFzZSIsImRhdGEiLCJlcnJvciIsImF1dGgiLCJnZXRVc2VyIiwidXNlciIsImVtYWlsIiwibG9nb3V0Iiwic2lnbk91dCJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(action-browser)/./src/app/actions.ts\n");
 
 /***/ }),
 
@@ -178,7 +343,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Home)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_navigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/navigation */ \"(rsc)/./node_modules/next/dist/api/navigation.react-server.js\");\n\n\nfunction Home() {\n    (0,next_navigation__WEBPACK_IMPORTED_MODULE_1__.redirect)('/login');\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {}, void 0, false, {\n        fileName: \"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/page.tsx\",\n        lineNumber: 8,\n        columnNumber: 5\n    }, this);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvYXBwL3BhZ2UudHN4IiwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBQTJDO0FBRTVCLFNBQVNDO0lBRXRCRCx5REFBUUEsQ0FBQztJQUVULHFCQUNFLDhEQUFDRTs7Ozs7QUFJTCIsInNvdXJjZXMiOlsiL1VzZXJzL3Nlcmdpby9Eb2N1bWVudHMvRHlzaGV6L2R5c2hlei1wcnVlYmEtdGVjbmljYS9zcmMvYXBwL3BhZ2UudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHJlZGlyZWN0IH0gZnJvbSAnbmV4dC9uYXZpZ2F0aW9uJztcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gSG9tZSgpIHtcblxuICByZWRpcmVjdCgnL2xvZ2luJyk7XG5cbiAgcmV0dXJuIChcbiAgICA8ZGl2PlxuXG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwibmFtZXMiOlsicmVkaXJlY3QiLCJIb21lIiwiZGl2Il0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./src/app/page.tsx\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-server-dom-webpack/server.edge */ "(rsc)/./node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-server-dom-webpack-server-edge.js");
+/* harmony import */ var react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
+function() { throw new Error("Attempted to call the default export of \"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/page.tsx\" from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
+"/Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/page.tsx",
+"default",
+));
+
+
+/***/ }),
+
+/***/ "(action-browser)/./utils/supabase/server.ts":
+/*!**********************************!*\
+  !*** ./utils/supabase/server.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createClient: () => (/* binding */ createClient)\n/* harmony export */ });\n/* harmony import */ var _supabase_ssr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/ssr */ \"(action-browser)/./node_modules/@supabase/ssr/dist/module/index.js\");\n/* harmony import */ var next_headers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/headers */ \"(action-browser)/./node_modules/next/dist/api/headers.js\");\n\n\nasync function createClient() {\n    const cookieStore = await (0,next_headers__WEBPACK_IMPORTED_MODULE_1__.cookies)();\n    return (0,_supabase_ssr__WEBPACK_IMPORTED_MODULE_0__.createServerClient)(\"https://wpgafhjqujkqtddxppgn.supabase.co\", \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwZ2FmaGpxdWprcXRkZHhwcGduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU2OTY4MjgsImV4cCI6MjA1MTI3MjgyOH0.gP7hosw4wcl1hn2XSCijG7tpFUw77PdNaHUDDI1fyJI\", {\n        cookies: {\n            getAll () {\n                return cookieStore.getAll();\n            },\n            setAll (cookiesToSet) {\n                try {\n                    cookiesToSet.forEach(({ name, value, options })=>cookieStore.set(name, value, options));\n                } catch  {\n                // The `setAll` method was called from a Server Component.\n                // This can be ignored if you have middleware refreshing\n                // user sessions.\n                }\n            }\n        }\n    });\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFjdGlvbi1icm93c2VyKS8uL3V0aWxzL3N1cGFiYXNlL3NlcnZlci50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7QUFBa0Q7QUFDWjtBQUUvQixlQUFlRTtJQUVwQixNQUFNQyxjQUFjLE1BQU1GLHFEQUFPQTtJQUVqQyxPQUFPRCxpRUFBa0JBLENBQ3ZCSSwwQ0FBb0MsRUFDcENBLGtOQUF5QyxFQUN6QztRQUNFSCxTQUFTO1lBQ1BPO2dCQUNFLE9BQU9MLFlBQVlLLE1BQU07WUFDM0I7WUFDQUMsUUFBT0MsWUFBWTtnQkFDakIsSUFBSTtvQkFDRkEsYUFBYUMsT0FBTyxDQUFDLENBQUMsRUFBRUMsSUFBSSxFQUFFQyxLQUFLLEVBQUVDLE9BQU8sRUFBRSxHQUM1Q1gsWUFBWVksR0FBRyxDQUFDSCxNQUFNQyxPQUFPQztnQkFFakMsRUFBRSxPQUFNO2dCQUNOLDBEQUEwRDtnQkFDMUQsd0RBQXdEO2dCQUN4RCxpQkFBaUI7Z0JBQ25CO1lBQ0Y7UUFDRjtJQUNGO0FBRUoiLCJzb3VyY2VzIjpbIi9Vc2Vycy9zZXJnaW8vRG9jdW1lbnRzL0R5c2hlei9keXNoZXotcHJ1ZWJhLXRlY25pY2EvdXRpbHMvc3VwYWJhc2Uvc2VydmVyLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGNyZWF0ZVNlcnZlckNsaWVudCB9IGZyb20gJ0BzdXBhYmFzZS9zc3InXG5pbXBvcnQgeyBjb29raWVzIH0gZnJvbSAnbmV4dC9oZWFkZXJzJ1xuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gY3JlYXRlQ2xpZW50KCkge1xuXG4gIGNvbnN0IGNvb2tpZVN0b3JlID0gYXdhaXQgY29va2llcygpXG5cbiAgcmV0dXJuIGNyZWF0ZVNlcnZlckNsaWVudChcbiAgICBwcm9jZXNzLmVudi5ORVhUX1BVQkxJQ19TVVBBQkFTRV9VUkwhLFxuICAgIHByb2Nlc3MuZW52Lk5FWFRfUFVCTElDX1NVUEFCQVNFX0FOT05fS0VZISxcbiAgICB7XG4gICAgICBjb29raWVzOiB7XG4gICAgICAgIGdldEFsbCgpIHtcbiAgICAgICAgICByZXR1cm4gY29va2llU3RvcmUuZ2V0QWxsKClcbiAgICAgICAgfSxcbiAgICAgICAgc2V0QWxsKGNvb2tpZXNUb1NldCkge1xuICAgICAgICAgIHRyeSB7XG4gICAgICAgICAgICBjb29raWVzVG9TZXQuZm9yRWFjaCgoeyBuYW1lLCB2YWx1ZSwgb3B0aW9ucyB9KSA9PlxuICAgICAgICAgICAgICBjb29raWVTdG9yZS5zZXQobmFtZSwgdmFsdWUsIG9wdGlvbnMpXG4gICAgICAgICAgICApXG4gICAgICAgICAgfSBjYXRjaCB7XG4gICAgICAgICAgICAvLyBUaGUgYHNldEFsbGAgbWV0aG9kIHdhcyBjYWxsZWQgZnJvbSBhIFNlcnZlciBDb21wb25lbnQuXG4gICAgICAgICAgICAvLyBUaGlzIGNhbiBiZSBpZ25vcmVkIGlmIHlvdSBoYXZlIG1pZGRsZXdhcmUgcmVmcmVzaGluZ1xuICAgICAgICAgICAgLy8gdXNlciBzZXNzaW9ucy5cbiAgICAgICAgICB9XG4gICAgICAgIH0sXG4gICAgICB9LFxuICAgIH1cbiAgKVxufSJdLCJuYW1lcyI6WyJjcmVhdGVTZXJ2ZXJDbGllbnQiLCJjb29raWVzIiwiY3JlYXRlQ2xpZW50IiwiY29va2llU3RvcmUiLCJwcm9jZXNzIiwiZW52IiwiTkVYVF9QVUJMSUNfU1VQQUJBU0VfVVJMIiwiTkVYVF9QVUJMSUNfU1VQQUJBU0VfQU5PTl9LRVkiLCJnZXRBbGwiLCJzZXRBbGwiLCJjb29raWVzVG9TZXQiLCJmb3JFYWNoIiwibmFtZSIsInZhbHVlIiwib3B0aW9ucyIsInNldCJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(action-browser)/./utils/supabase/server.ts\n");
 
 /***/ })
 
@@ -189,7 +377,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc","vendor-chunks/@supabase","vendor-chunks/tr46","vendor-chunks/whatwg-url","vendor-chunks/cookie","vendor-chunks/webidl-conversions"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader/index.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
 module.exports = __webpack_exports__;
 
 })();

@@ -1,9 +1,31 @@
 {
   "node": {
+    "00a81c41034bf039a1b18e3ae0567d75d4ec815ce1": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Factions.ts%22%2C%5B%5B%2200a81c41034bf039a1b18e3ae0567d75d4ec815ce1%22%2C%22getUserEmail%22%5D%2C%5B%2200e2f932e89b08ec200278dd329d3a9fbf4259617a%22%2C%22logout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    },
+    "00e2f932e89b08ec200278dd329d3a9fbf4259617a": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Factions.ts%22%2C%5B%5B%2200a81c41034bf039a1b18e3ae0567d75d4ec815ce1%22%2C%22getUserEmail%22%5D%2C%5B%2200e2f932e89b08ec200278dd329d3a9fbf4259617a%22%2C%22logout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    },
     "4013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e": {
       "workers": {
         "app/login/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fcomponents%2Flogin%2Factions.ts%22%2C%5B%5B%224013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e%22%2C%22login%22%5D%2C%5B%22403c401a970f358b6ca15bca89bc26044e8fcaa853%22%2C%22signup%22%5D%5D%5D%5D&__client_imported__=true!",
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fcomponents%2Flogin%2Factions.ts%22%2C%5B%5B%224013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e%22%2C%22login%22%5D%2C%5B%22403c401a970f358b6ca15bca89bc26044e8fcaa853%22%2C%22signup%22%5D%2C%5B%2240c4b6fe22bd88bfd2a95b5c8ee2cb7eaa2fcec4a0%22%2C%22resetPassword%22%5D%5D%5D%5D&__client_imported__=true!",
           "async": false
         }
       },
@@ -14,7 +36,18 @@
     "403c401a970f358b6ca15bca89bc26044e8fcaa853": {
       "workers": {
         "app/login/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fcomponents%2Flogin%2Factions.ts%22%2C%5B%5B%224013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e%22%2C%22login%22%5D%2C%5B%22403c401a970f358b6ca15bca89bc26044e8fcaa853%22%2C%22signup%22%5D%5D%5D%5D&__client_imported__=true!",
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fcomponents%2Flogin%2Factions.ts%22%2C%5B%5B%224013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e%22%2C%22login%22%5D%2C%5B%22403c401a970f358b6ca15bca89bc26044e8fcaa853%22%2C%22signup%22%5D%2C%5B%2240c4b6fe22bd88bfd2a95b5c8ee2cb7eaa2fcec4a0%22%2C%22resetPassword%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/login/page": "action-browser"
+      }
+    },
+    "40c4b6fe22bd88bfd2a95b5c8ee2cb7eaa2fcec4a0": {
+      "workers": {
+        "app/login/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fcomponents%2Flogin%2Factions.ts%22%2C%5B%5B%224013a9cecdbcc83e6a378bad5e550d2a9f0eb4395e%22%2C%22login%22%5D%2C%5B%22403c401a970f358b6ca15bca89bc26044e8fcaa853%22%2C%22signup%22%5D%2C%5B%2240c4b6fe22bd88bfd2a95b5c8ee2cb7eaa2fcec4a0%22%2C%22resetPassword%22%5D%5D%5D%5D&__client_imported__=true!",
           "async": false
         }
       },

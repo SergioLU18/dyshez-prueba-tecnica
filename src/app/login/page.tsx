@@ -130,16 +130,16 @@ export default function LoginPage() {
                                 handleChange={handleFormChange} 
                                 icon="email"
                             />
-                            {!forgotPassword && (<div className={styles["input-container"]}>
-                                <Image
-                                    src="/password.svg"
-                                    alt="password icon"
-                                    width={18}
-                                    height={18}
-                                    priority
+                            {!forgotPassword && (
+                                <FormInput 
+                                    value={loginFormData.password}
+                                    placeholder='Password'
+                                    name='password'
+                                    type="password"
+                                    handleChange={handleFormChange} 
+                                    icon="password"
                                 />
-                                <input value={loginFormData.password} onChange={handleFormChange} name="password" className={styles.input} type="password" placeholder='Password' />
-                            </div>)}
+                            )}
                             {!forgotPassword && <p className={styles["login-error-message"]}>{submitError}</p>}
                         </div>
                         <div className={styles["login-button-container"]}>

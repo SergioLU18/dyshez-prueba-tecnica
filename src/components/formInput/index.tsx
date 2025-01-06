@@ -25,7 +25,7 @@ export const FormInput: React.FC<FormInputChange> = ({value, handleChange, place
                 height={18}
                 priority
             />
-            <input value={value} onChange={handleChange} className={styles.input} type={isVisible ? type : "password"} placeholder={placeholder} name={name} />    
+            <input value={value} onChange={handleChange} className={styles.input} type={isVisible ? "text" : "password"} placeholder={placeholder} name={name} />    
             {showControls && (<div className={styles["toggle-visibility"]} onClick={() => {setIsVisible(!isVisible)}}>
                 <Image
                     src="/eye.svg"

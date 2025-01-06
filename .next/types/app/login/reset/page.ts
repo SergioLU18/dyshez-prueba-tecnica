@@ -1,8 +1,8 @@
 // File: /Users/sergio/Documents/Dyshez/dyshez-prueba-tecnica/src/app/login/reset/page.tsx
-import * as entry from '../../../../../src/app/login/reset/page.js'
+import * as entry from '../../../../../src/app/reset/page.jsx'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../../src/app/login/reset/page.js')
+type TEntry = typeof import('../../../../../src/app/reset/page.jsx')
 
 type SegmentParams<T extends Object = any> = T extends Record<string, any>
   ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }

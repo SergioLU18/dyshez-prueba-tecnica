@@ -3,14 +3,17 @@
 import { PageContainer } from "@/components/pageContainer";
 import { Welcome } from "@/components/welcome";
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import Image from "next/image";
 import styles from './page.module.css'
 import { Button } from "@/components/button";
+import { updateUserPassword } from "./actions";
+import { useSearchParams } from 'next/navigation';
 
 export default function LoginPage() {
 
     const router = useRouter();
+    const searchParams = useSearchParams();
     
     const [resetFormData, setResetFormData] = React.useState({
         password: "",
@@ -29,9 +32,13 @@ export default function LoginPage() {
             }));
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if(resetFormData.password !== resetFormData.confirmPassword) {
             setErrorMessage("Passwords don't match")
+        }
+        else {
+            let error = await updateUserPassword(resetFormData.password)
+            setErrorMessage(error);
         }
     }
 

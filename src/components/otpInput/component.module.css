@@ -1,4 +1,13 @@
-.container {
+.otp-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.otp-inputs {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -13,4 +22,47 @@
     border: 1px solid #0C0C0C;
     border-radius: 8px;
     text-align: center;
+}
+
+.header {
+    color: #0C0C0C;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.header > p {
+    color: #797979;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.resend {
+    color: #797979;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.resend > p {
+    cursor: pointer;
+    display: inline;
+    color: #e3036f;
+    text-decoration: underline;
+}
+
+.resend.locked > p {
+    cursor: not-allowed;
+    opacity: 50%;
 }

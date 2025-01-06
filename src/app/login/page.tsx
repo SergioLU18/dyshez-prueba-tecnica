@@ -9,25 +9,26 @@ import * as React from 'react';
 import { login, resetPassword } from "./actions";
 import { Button } from "@/components/button";
 import { OTPInput } from "@/components/otpInput";
+import { FormInput } from "@/components/formInput";
 
 export default function LoginPage() {
 
     const [isLogin, setIsLogin] = React.useState(true);
     const [forgotPassword, setForgotPassword] = React.useState(false);
     const [resetSent, setResetSent] = React.useState(false);
-    const [userFormData, setUserFormData] = React.useState({
+    const [loginFormData, setLoginFormData] = React.useState({
         email: "",
-        password: ""
+        password: "",
     })
     const loginFormRef = React.useRef<HTMLFormElement>(null);
     const [submitError, setSubmitError] = React.useState("");
     const [loading, setLoading] = React.useState(false);
     const loginRef = React.useRef<HTMLButtonElement>(null);
     const signupRef = React.useRef<HTMLButtonElement>(null);
-    const [otpActive, setOtpActive] = React.useState(true);
+    const [otpActive, setOtpActive] = React.useState(false);
 
     const toggleForgotPassword = () => {
-        setUserFormData({
+        setLoginFormData({
             email: "",
             password: ""
         })
@@ -73,19 +74,19 @@ export default function LoginPage() {
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         if(name === "password" && value[value.length - 1] == " ") return;
-        setUserFormData((prevFormData) => ({
+        setLoginFormData((prevFormData) => ({
             ...prevFormData,
             [name]: value,
         }));
     };
         
-    const submitButtonDisabled = loading || !userFormData.email || (!forgotPassword && !userFormData.password);
+    const submitButtonDisabled = loading || !loginFormData.email || (!forgotPassword && !loginFormData.password);
     
     const showThirdPartyLogins = !forgotPassword && !resetSent;
     
     const headerMessage = isLogin ? "Log in with your e-mail or your phone number." : "Join the revolution! To begin using our services, enter your personal information below and join the Dyshez movement."
     
-    const resetPasswordMessage = resetSent ? `An email with instructions to reset your password has been sent to ${userFormData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
+    const resetPasswordMessage = resetSent ? `An email with instructions to reset your password has been sent to ${loginFormData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
     
     return (
         <PageContainer>
@@ -121,16 +122,14 @@ export default function LoginPage() {
                     {/* LOGIN VIEW */}
                     {!resetSent && (<form className={styles["login-form"]} onSubmit={handleSubmit} ref={loginFormRef}>
                         <div className={styles["login-inputs"]}>
-                            <div className={styles["input-container"]}>
-                                <Image
-                                    src={`${!forgotPassword ? "/at-regular.svg" : "/email.svg"}`}
-                                    alt="At or phone icon"
-                                    width={18}
-                                    height={18}
-                                    priority
-                                />
-                                <input value={userFormData.email} onChange={handleFormChange} name="email" className={styles.input} type="text" placeholder={`${!forgotPassword ? "E-mail or phone number" : "E-mail*"}`} />
-                            </div>
+                            <FormInput 
+                                value={loginFormData.email} 
+                                placeholder={`${!forgotPassword ? "E-mail or phone number" : "E-mail*"}`}
+                                name="email"
+                                type="text"
+                                handleChange={handleFormChange} 
+                                icon="email"
+                            />
                             {!forgotPassword && (<div className={styles["input-container"]}>
                                 <Image
                                     src="/password.svg"
@@ -139,7 +138,7 @@ export default function LoginPage() {
                                     height={18}
                                     priority
                                 />
-                                <input value={userFormData.password} onChange={handleFormChange} name="password" className={styles.input} type="password" placeholder='Password' />
+                                <input value={loginFormData.password} onChange={handleFormChange} name="password" className={styles.input} type="password" placeholder='Password' />
                             </div>)}
                             {!forgotPassword && <p className={styles["login-error-message"]}>{submitError}</p>}
                         </div>

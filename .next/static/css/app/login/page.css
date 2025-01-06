@@ -1,7 +1,7 @@
-/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/login/component.module.css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************/
-.component_card__y4U2P {
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/app/login/page.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+.page_card__wnoHP {
     box-shadow: 0px 8px 28px 0px rgba(0, 0, 0, 0.2);
     padding: 32px;
     width: 400px;
@@ -12,16 +12,16 @@
     justify-content: space-between;
 }
 
-.component_card__y4U2P.component_signup__LE_i4 {
+.page_card__wnoHP.page_signup__2TYA_ {
     width: 100%;
 }
 
-.component_card__y4U2P.component_forgot-password__LqVVF {
+.page_card__wnoHP.page_forgot-password__sdr_w {
     justify-content: start;
     gap: 36px;
 }
 
-.component_header__5qB63 {
+.page_header__X7UxJ {
     display: flex;
     flex-direction: column;
     font-size: 24px;
@@ -30,26 +30,26 @@
     container-type: inline-size;
 }
 
-.component_header-actions__g6sLn {
+.page_header-actions__HsucE {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.component_button__VD3cM {
+.page_button__XvIaA {
     all: unset;
     cursor: pointer;
     color: #A6A6A6;
 }
 
-.component_button-active__mSqs6 {
+.page_button-active__VKX1T {
     all: unset;
     cursor: pointer;
     color: #0C0C0C;
     transition: all 0.3s ease;
 }
 
-.component_header-actions-underline__6MkOr {
+.page_header-actions-underline__POb07 {
     height: 4px;
     background-color: #000000;
     /* transition: transform 0.3s ease; */
@@ -57,11 +57,11 @@
 
 }
   
-.component_header-actions-underline__6MkOr.component_move-right__yM_fB {
+.page_header-actions-underline__POb07.page_move-right__ctkhg {
     transform: translateX(calc(100cqw - 100%));
 }
 
-.component_instruction__ZM2V_ {
+.page_instruction__Cgw_S {
     color: #0C0C0C;
     font-size: 16px;
     font-weight: 600;
@@ -69,13 +69,13 @@
     margin-top: 24px;
 }
 
-.component_login-inputs__y1EEu {
+.page_login-inputs__AQZB7 {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.component_input-container__uG2AR {
+.page_input-container__3BJ5V {
     border: #E7E7E9D9 2px solid;
     padding: 13px 20px;
     border-radius: 108px;
@@ -85,7 +85,7 @@
     align-items: center;
 }
 
-.component_input__9ItqQ {
+.page_input__t1GXH {
     all: unset;
     caret-color: #e3036f; 
     color: #0C0C0C;
@@ -93,26 +93,26 @@
     text-align: left;
 }
 
-.component_input__9ItqQ::placeholder {
+.page_input__t1GXH::placeholder {
     color: #747474;
     font-size: 14px;
     line-height: 16px;
     font-weight: 500;
 }
 
-.component_login-form__Eohzz {
+.page_login-form__rK9be {
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-.component_login-button-container__Z5Iq8 {
+.page_login-button-container__wuR5g {
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-.component_login-button__vQ8gZ {
+.page_login-button__xfChR {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -129,26 +129,26 @@
     margin: auto;
 }
 
-.component_login-button__vQ8gZ.component_disabled___Sugm {
+.page_login-button__xfChR.page_disabled__iL1TN {
     opacity: 50%;
     cursor: not-allowed;
 }
 
-.component_forgot-password__LqVVF {
+.page_forgot-password__sdr_w {
     color: #797979;
     font-size: 13px;
     text-align: center;
     font-weight: 500;
 }
 
-.component_forgot-password__LqVVF > p {
+.page_forgot-password__sdr_w > p {
     cursor: pointer;
     display: inline;
     color: #e3036f;
     text-decoration: underline;
 }
 
-.component_forgot-password-message__Oxuls {
+.page_forgot-password-message__Z8yBG {
     color: #0C0C0C;
     font-size: 18px;
     font-weight: 700;
@@ -158,20 +158,20 @@
     gap: 8px;
 }
 
-.component_forgot-password-message__Oxuls > p {
+.page_forgot-password-message__Z8yBG > p {
     color: #797979;
     font-size: 14px;
     font-weight: 500;
 }
 
 
-.component_login-socials__ugSPt {
+.page_login-socials__RSB3b {
     display: flex;
     flex-direction: row;
     gap: 16px;
 }
 
-.component_login-socials-button__jWR7l {
+.page_login-socials-button__tTnzt {
     background-color: #F4F4F4;
     padding: 14px 24px;
     border-radius: 100px;
@@ -181,36 +181,11 @@
     width: 100%;
 }
 
-.component_login-error-message__bP_PF {
+.page_login-error-message__SWnd_ {
     color: #FF0000;
     font-size: 12px;
     font-weight: 500;
     text-align: center;
-}
-/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/button/component.module.css ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************/
-.component_button__j_bcV {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    flex-grow: 0;
-    flex-shrink: 0;
-    background-color: #e3036f;
-    color: #ffffff;
-    padding: 14px 24px;
-    gap: 6px;
-    border-radius: 100px;
-    font-size: 16px;
-    font-weight: 700;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.component_button__j_bcV.component_disabled__E5RgY {
-    opacity: 50%;
-    cursor: not-allowed;
 }
 /*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/welcome/component.module.css ***!
@@ -257,3 +232,28 @@
       --button-secondary-hover: #1a1a1a;
     }
   }
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/button/component.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+.component_button__j_bcV {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: #e3036f;
+    color: #ffffff;
+    padding: 14px 24px;
+    gap: 6px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.component_button__j_bcV.component_disabled__E5RgY {
+    opacity: 50%;
+    cursor: not-allowed;
+}

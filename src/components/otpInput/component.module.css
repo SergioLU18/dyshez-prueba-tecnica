@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input {
+    all: unset;
+    width: 45px;
+    height: 45px;
+    caret-color: #e3036f; 
+    color: #0C0C0C;
+    border: 1px solid #0C0C0C;
+    border-radius: 8px;
+    text-align: center;
+}

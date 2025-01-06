@@ -168,7 +168,7 @@ export default function LoginPage() {
                         ))}
                     </div>)}
                 </>)}
-                {otpActive && <OTPInput />}
+                {otpActive && <OTPInput length={6} />}
             </div>
         </PageContainer>
     );

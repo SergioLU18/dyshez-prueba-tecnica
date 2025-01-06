@@ -257,3 +257,22 @@
     opacity: 50%;
     cursor: not-allowed;
 }
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/otpInput/component.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+.component_container___rZs5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.component_input__85fv_ {
+    all: unset;
+    width: 45px;
+    height: 45px;
+    caret-color: #e3036f; 
+    color: #0C0C0C;
+    border: 1px solid #0C0C0C;
+    border-radius: 8px;
+    text-align: center;
+}

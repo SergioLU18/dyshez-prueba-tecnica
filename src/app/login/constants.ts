@@ -17,3 +17,14 @@ export const thirdPartyLogins: ThirdPartyLogin[] = [
         altText: 'facebook login icon',
     },
 ]
+
+export const initialFormData = {
+    email: "",
+    password: "",
+    confirmPassword: "",
+    names: "",
+    lastNames: "",
+    mobile: "",
+    phone: "",
+    website: "",
+}

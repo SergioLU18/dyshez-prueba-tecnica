@@ -4,22 +4,20 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import { Welcome } from "@/components/welcome";
 import { PageContainer } from "@/components/pageContainer";
-import { ThirdPartyLogin, thirdPartyLogins } from './constants';
+import { ThirdPartyLogin, thirdPartyLogins, initialFormData } from './constants';
 import * as React from 'react';
 import { login, resetPassword } from "./actions";
 import { Button } from "@/components/button";
 import { OTPInput } from "@/components/otpInput";
 import { FormInput } from "@/components/formInput";
+import { isNumber } from "../../../utils/helpers";
 
 export default function LoginPage() {
 
-    const [isLogin, setIsLogin] = React.useState(true);
+    const [isLogin, setIsLogin] = React.useState(false);
     const [forgotPassword, setForgotPassword] = React.useState(false);
     const [resetSent, setResetSent] = React.useState(false);
-    const [loginFormData, setLoginFormData] = React.useState({
-        email: "",
-        password: "",
-    })
+    const [formData, setformData] = React.useState(initialFormData)
     const loginFormRef = React.useRef<HTMLFormElement>(null);
     const [submitError, setSubmitError] = React.useState("");
     const [loading, setLoading] = React.useState(false);
@@ -28,15 +26,13 @@ export default function LoginPage() {
     const [otpActive, setOtpActive] = React.useState(false);
 
     const toggleForgotPassword = () => {
-        setLoginFormData({
-            email: "",
-            password: ""
-        })
+        setformData(initialFormData)
         setSubmitError("");
         setForgotPassword(!forgotPassword);
     }
     
     const toggleIsLogin = () => {
+        setformData(initialFormData)
         setIsLogin(!isLogin);
     }
     
@@ -73,21 +69,24 @@ export default function LoginPage() {
     
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
+        console.log(value);
         if(name === "password" && value[value.length - 1] == " ") return;
-        setLoginFormData((prevFormData) => ({
+        setformData((prevFormData) => ({
             ...prevFormData,
             [name]: value,
         }));
     };
         
-    const submitButtonDisabled = loading || !loginFormData.email || (!forgotPassword && !loginFormData.password);
+    const submitButtonDisabled = loading || !formData.email || (!forgotPassword && !formData.password);
     
-    const showThirdPartyLogins = !forgotPassword && !resetSent;
+    const showThirdPartyLogins = !forgotPassword && !resetSent && isLogin;
     
     const headerMessage = isLogin ? "Log in with your e-mail or your phone number." : "Join the revolution! To begin using our services, enter your personal information below and join the Dyshez movement."
     
-    const resetPasswordMessage = resetSent ? `An email with instructions to reset your password has been sent to ${loginFormData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
+    const resetPasswordMessage = resetSent ? `An email with instructions to reset your password has been sent to ${formData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
     
+    const submitButtonLabel = isLogin ? "Continue" : "Create account"
+
     return (
         <PageContainer>
             <Welcome />
@@ -119,11 +118,11 @@ export default function LoginPage() {
                         </div>
                     )}
 
-                    {/* LOGIN VIEW */}
                     {!resetSent && (<form className={styles["login-form"]} onSubmit={handleSubmit} ref={loginFormRef}>
-                        <div className={styles["login-inputs"]}>
+                        {/* LOGIN VIEW */}
+                        {isLogin && (<div className={styles["login-inputs"]}>
                             <FormInput 
-                                value={loginFormData.email} 
+                                value={formData.email} 
                                 placeholder={`${!forgotPassword ? "E-mail or phone number" : "E-mail*"}`}
                                 name="email"
                                 type="text"
@@ -132,7 +131,7 @@ export default function LoginPage() {
                             />
                             {!forgotPassword && (
                                 <FormInput 
-                                    value={loginFormData.password}
+                                    value={formData.password}
                                     placeholder='Password'
                                     name='password'
                                     type="password"
@@ -141,15 +140,82 @@ export default function LoginPage() {
                                 />
                             )}
                             {!forgotPassword && <p className={styles["login-error-message"]}>{submitError}</p>}
-                        </div>
+                        </div>)}
+                        {/* SIGNUP VIEW */}
+                        {!isLogin && (<div>
+                            <FormInput
+                                value={formData.names}
+                                placeholder="Name(s)*"
+                                name="names"
+                                type="text"
+                                handleChange={handleFormChange}
+                                icon="user"
+                            />
+                            <FormInput
+                                value={formData.lastNames}
+                                placeholder="Last Name(s)*"
+                                name="lastNames"
+                                type="text"
+                                handleChange={handleFormChange}
+                                icon="user"
+                            />
+                            <FormInput
+                                value={formData.mobile}
+                                placeholder="123 456 7890*"
+                                name="mobile"
+                                type="tel"
+                                handleChange={handleFormChange}
+                                icon="mobile"
+                            />
+                            <FormInput
+                                value={formData.phone}
+                                placeholder="123 456 7890"
+                                name="phone"
+                                type="tel"
+                                handleChange={handleFormChange}
+                                icon="phone"
+                            /> 
+                            <FormInput
+                                value={formData.website}
+                                placeholder="Website"
+                                name="website"
+                                type="text"
+                                handleChange={handleFormChange}
+                                icon="website"
+                            />
+                            <FormInput
+                                value={formData.email}
+                                placeholder="Email*"
+                                name="email"
+                                type="text"
+                                handleChange={handleFormChange}
+                                icon="email"
+                            />
+                            <FormInput
+                                value={formData.password}
+                                placeholder="Password(s)*"
+                                name="password"
+                                type="password"
+                                handleChange={handleFormChange}
+                                icon="password"
+                            />
+                            <FormInput
+                                value={formData.confirmPassword}
+                                placeholder="Confirm password(s)*"
+                                name="confirmPassword"
+                                type="password"
+                                handleChange={handleFormChange}
+                                icon="password"
+                            />
+                        </div>)}
                         <div className={styles["login-button-container"]}>
-                            <Button primaryAction={handleCustomSubmit} label="Continue" disabled={submitButtonDisabled} />
-                            <div className={styles["forgot-password"]}>
+                            <Button primaryAction={handleCustomSubmit} label={submitButtonLabel} disabled={submitButtonDisabled} />
+                            {isLogin && <div className={styles["forgot-password"]}>
                                 {!forgotPassword ? "Forgot your password? " : "Remembered your password? "}
                                 <p onClick={toggleForgotPassword}>
                                     {!forgotPassword ? "Reset it." : "Log in."}
                                 </p>
-                            </div>
+                            </div>}
                         </div>
                     </form>)}
 

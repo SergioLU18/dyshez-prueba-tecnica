@@ -2,12 +2,11 @@ import * as React from 'react';
 import styles from './component.module.css'
 import Image from "next/image";
 import LoadingDots from '../loadingDots';
+import { isNumber } from '../../../utils/helpers';
 
 interface OTPInputProps {
     length: number;
 }
-
-const allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 export const OTPInput: React.FC<OTPInputProps> = ({length}) => {
 
@@ -38,7 +37,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({length}) => {
     
     const handleChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
-        if(!allowedKeys.includes(value)) return
+        if(!isNumber(value)) return
         const newOtp = [...otp]
         newOtp[index] = value;
         setOtp(newOtp);

@@ -7,14 +7,16 @@ interface FormInputChange {
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     name: string;
-    type: 'text' | 'password';
+    type: 'text' | 'password' | 'tel';
     icon: string;
 }
 
 export const FormInput: React.FC<FormInputChange> = ({value, handleChange, placeholder, name, type, icon}) => {
 
-    const showControls = type === "password";
-    const [isVisible, setIsVisible] = React.useState(!showControls)
+    const isPass = type === "password";
+    const isTel = type === 'tel';
+    const [isVisible, setIsVisible] = React.useState(!isPass)
+    const inputType = !isTel ? type : isVisible ? "text" : "password"
 
     return (
         <div className={styles["input-container"]}>
@@ -25,8 +27,18 @@ export const FormInput: React.FC<FormInputChange> = ({value, handleChange, place
                 height={18}
                 priority
             />
-            <input value={value} onChange={handleChange} className={styles.input} type={isVisible ? "text" : "password"} placeholder={placeholder} name={name} />    
-            {showControls && (<div className={styles["toggle-visibility"]} onClick={() => {setIsVisible(!isVisible)}}>
+            {isTel && (<div className={styles["phone-prefix"]}>
+                +52
+            </div>)}
+            <input 
+                value={value}
+                onChange={handleChange}
+                className={styles.input}
+                type={inputType}
+                placeholder={placeholder}
+                name={name}
+            />    
+            {isPass && (<div className={styles["toggle-visibility"]} onClick={() => {setIsVisible(!isVisible)}}>
                 <Image
                     src="/eye.svg"
                     alt="show password icon"

@@ -13,17 +13,20 @@ import { FormInput } from "@/components/formInput";
 import { isNumber } from "../../../utils/helpers";
 
 export default function LoginPage() {
-
+    
+    const [formData, setformData] = React.useState(initialFormData)
     const [isLogin, setIsLogin] = React.useState(false);
     const [forgotPassword, setForgotPassword] = React.useState(false);
     const [resetSent, setResetSent] = React.useState(false);
-    const [formData, setformData] = React.useState(initialFormData)
-    const loginFormRef = React.useRef<HTMLFormElement>(null);
-    const [submitError, setSubmitError] = React.useState("");
     const [loading, setLoading] = React.useState(false);
+    const [otpActive, setOtpActive] = React.useState(false);
+    const [termsChecked, setTermsChecked] = React.useState(false)
+    const [submitError, setSubmitError] = React.useState("");
+    
+    const loginFormRef = React.useRef<HTMLFormElement>(null);
+    const signupFormRef = React.useRef<HTMLFormElement>(null);
     const loginRef = React.useRef<HTMLButtonElement>(null);
     const signupRef = React.useRef<HTMLButtonElement>(null);
-    const [otpActive, setOtpActive] = React.useState(false);
 
     const toggleForgotPassword = () => {
         setformData(initialFormData)
@@ -36,35 +39,33 @@ export default function LoginPage() {
         setIsLogin(!isLogin);
     }
     
-    const handleCustomSubmit = () => {
-        if (loginFormRef.current) {
-            loginFormRef.current.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-        }
-    };
-    
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleSubmit = async () => {
         setSubmitError("");
         setLoading(true);
-        const formElement = event.currentTarget as HTMLFormElement;
+        const formElement = loginFormRef.current as HTMLFormElement
         const formData = new FormData(formElement);
-        if(!forgotPassword) {
-            const error = await login(formData);
-            if(error) {
-                setSubmitError("We couldn't find an account with the provided credentials. Please try again.");
-            }
-            setLoading(false);
-        }
-        else {
-            setResetSent(true);
-            const error = await resetPassword(formData);
-            if(!error) {
-                setResetSent(true);
+        if(isLogin) {
+            if(!forgotPassword) {
+                const error = await login(formData);
+                if(error) {
+                    setSubmitError("We couldn't find an account with the provided credentials. Please try again.");
+                }
             }
             else {
-                setSubmitError("Sorry, something went wrong. Please try again.");
+                setResetSent(true);
+                const error = await resetPassword(formData);
+                if(!error) {
+                    setResetSent(true);
+                }
+                else {
+                    setSubmitError("Sorry, something went wrong. Please try again.");
+                }
             }
         }
+        else {
+            // TODO: Signup logic will go here
+        }
+        setLoading(false)
     }
     
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,14 +79,12 @@ export default function LoginPage() {
     };
         
     const submitButtonDisabled = loading || !formData.email || (!forgotPassword && !formData.password);
-    
     const showThirdPartyLogins = !forgotPassword && !resetSent && isLogin;
     
     const headerMessage = isLogin ? "Log in with your e-mail or your phone number." : "Join the revolution! To begin using our services, enter your personal information below and join the Dyshez movement."
-    
     const resetPasswordMessage = resetSent ? `An email with instructions to reset your password has been sent to ${formData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
-    
     const submitButtonLabel = isLogin ? "Continue" : "Create account"
+    const subActionLabel = !isLogin ? "If you already have a dyshez account and want to add a new branch, learn how to do it" : !forgotPassword ? "Forgot your password? " : "Remembered your password? "
 
     return (
         <PageContainer>
@@ -118,7 +117,7 @@ export default function LoginPage() {
                         </div>
                     )}
 
-                    {!resetSent && (<form className={styles["login-form"]} onSubmit={handleSubmit} ref={loginFormRef}>
+                    {!resetSent && (<form className={styles["login-form"]} ref={loginFormRef}>
                         {/* LOGIN VIEW */}
                         {isLogin && (<div className={styles["login-inputs"]}>
                             <FormInput 
@@ -142,7 +141,7 @@ export default function LoginPage() {
                             {!forgotPassword && <p className={styles["login-error-message"]}>{submitError}</p>}
                         </div>)}
                         {/* SIGNUP VIEW */}
-                        {!isLogin && (<div>
+                        {!isLogin && (<form className={styles["signup-inputs"]} ref={signupFormRef}>
                             <FormInput
                                 value={formData.names}
                                 placeholder="Name(s)*"
@@ -193,7 +192,7 @@ export default function LoginPage() {
                             />
                             <FormInput
                                 value={formData.password}
-                                placeholder="Password(s)*"
+                                placeholder="Password*"
                                 name="password"
                                 type="password"
                                 handleChange={handleFormChange}
@@ -201,21 +200,35 @@ export default function LoginPage() {
                             />
                             <FormInput
                                 value={formData.confirmPassword}
-                                placeholder="Confirm password(s)*"
+                                placeholder="Confirm password*"
                                 name="confirmPassword"
                                 type="password"
                                 handleChange={handleFormChange}
                                 icon="password"
                             />
-                        </div>)}
+                        </form>)}
+                        {!isLogin && (
+                            <div className={styles["terms"]}>
+                                <div className={`${styles["checkbox-container"]} ${termsChecked ? styles["checked"] : ""}`} onClick={() => {setTermsChecked(!termsChecked)}}>
+                                    {termsChecked && (<Image
+                                        src="./check.svg"
+                                        alt="check icon"
+                                        width={12}
+                                        height={12}
+                                        priority
+                                    />)}
+                                </div>
+                                <p>I agree to the terms and conditions</p>
+                            </div>
+                        )}
                         <div className={styles["login-button-container"]}>
-                            <Button primaryAction={handleCustomSubmit} label={submitButtonLabel} disabled={submitButtonDisabled} />
-                            {isLogin && <div className={styles["forgot-password"]}>
-                                {!forgotPassword ? "Forgot your password? " : "Remembered your password? "}
-                                <p onClick={toggleForgotPassword}>
+                            <Button primaryAction={handleSubmit} label={submitButtonLabel} disabled={submitButtonDisabled} />
+                            <div className={styles["forgot-password"]}>
+                                {subActionLabel}
+                                {isLogin && (<p onClick={toggleForgotPassword}>
                                     {!forgotPassword ? "Reset it." : "Log in."}
-                                </p>
-                            </div>}
+                                </p>)}
+                            </div>
                         </div>
                     </form>)}
 

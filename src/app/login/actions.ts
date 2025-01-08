@@ -10,7 +10,7 @@ export async function resetPassword(formData: FormData) {
     const email = formData.get('email') as string
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `localhost:3000/reset`,
+        redirectTo: `http://localhost:3000/reset`,
     })
       
     return error
@@ -39,17 +39,13 @@ export async function signup(formData: FormData) {
 
     const supabase = await createClient()
 
-    const data = {
-      email: formData.get('email') as string,
-      password: formData.get('password') as string,
-    }
-
-    const { error } = await supabase.auth.signUp(data)
+    const { error } = await supabase.auth.signUp({
+        email: formData.get('email') as string,
+        password: formData.get('password') as string,
+    })
 
     if (error) {
-      redirect('/error')
+        return error
     }
 
-    revalidatePath('/', 'layout')
-    redirect('/')
 }

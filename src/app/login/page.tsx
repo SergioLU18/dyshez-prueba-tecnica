@@ -6,7 +6,7 @@ import { Welcome } from "@/components/welcome";
 import { PageContainer } from "@/components/pageContainer";
 import { ThirdPartyLogin, thirdPartyLogins, initialFormData, initialFormErrors } from './constants';
 import * as React from 'react';
-import { login, resetPassword } from "./actions";
+import { login, resetPassword, signup } from "./actions";
 import { Button } from "@/components/button";
 import { OTPInput } from "@/components/otpInput";
 import { FormInput } from "@/components/formInput";
@@ -16,7 +16,7 @@ export default function LoginPage() {
     
     const [formData, setformData] = React.useState(initialFormData)
     const [formErrors, setFormErrors] = React.useState(initialFormErrors)
-    const [isLogin, setIsLogin] = React.useState(false);
+    const [isLogin, setIsLogin] = React.useState(true);
     const [forgotPassword, setForgotPassword] = React.useState(false);
     const [resetSent, setResetSent] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
@@ -33,12 +33,14 @@ export default function LoginPage() {
         setformData(initialFormData)
         setSubmitError("");
         setForgotPassword(!forgotPassword);
+        setFormErrors(initialFormErrors)
     }
     
     const toggleIsLogin = () => {
         setformData(initialFormData)
         setFormErrors(initialFormErrors)
         setIsLogin(!isLogin);
+        setSubmitError("")
     }
 
     const checkFormErrors = () => {
@@ -47,7 +49,7 @@ export default function LoginPage() {
         if(!emailRegex.test(formData.email)) {
             newErrors.email = "Please, enter a valid eamil"
         }
-        if(!formData.password) {
+        if(!formData.password && !forgotPassword) {
             newErrors.password = "Please, enter a password"
         }
         if(!isLogin) {
@@ -83,9 +85,9 @@ export default function LoginPage() {
         if(Object.values(newErrors).some((value) => value.trim() !== '')) return
         setSubmitError("");
         setLoading(true);
-        const formElement = loginFormRef.current as HTMLFormElement
-        const formData = new FormData(formElement);
         if(isLogin) {
+            const formElement = loginFormRef.current as HTMLFormElement
+            const formData = new FormData(formElement);
             if(!forgotPassword) {
                 const error = await login(formData);
                 if(error) {
@@ -104,7 +106,12 @@ export default function LoginPage() {
             }
         }
         else {
-            // TODO: Signup logic will go here
+            const formElement = signupFormRef.current as HTMLFormElement
+            const formData = new FormData(formElement)
+            const error = await signup(formData);
+            if(error) {
+                setSubmitError(error.message)
+            }
         }
         setLoading(false)
     }
@@ -192,7 +199,6 @@ export default function LoginPage() {
                                     error={formErrors.password}
                                 />
                             )}
-                            {!forgotPassword && <p className={styles["login-error-message"]}>{submitError}</p>}
                         </form>)}
                         {/* SIGNUP VIEW */}
                         {!isLogin && (<form className={styles["signup-inputs"]} ref={signupFormRef}>
@@ -267,6 +273,7 @@ export default function LoginPage() {
                                 error={formErrors.confirmPassword}
                             />
                         </form>)}
+                        {!forgotPassword && (<p className={styles["error-message"]}>{submitError}</p>)}
                         {!isLogin && (
                             <div className={styles["terms"]}>
                                 <div className={`${styles["checkbox-container"]} ${termsChecked ? styles["checked"] : ""}`} onClick={() => {setTermsChecked(!termsChecked)}}>

@@ -17,6 +17,8 @@ const Home: React.FC = () => {
     })
   }, [])
 
+  if(!email) return;
+
   return (
     <div>
       <p>

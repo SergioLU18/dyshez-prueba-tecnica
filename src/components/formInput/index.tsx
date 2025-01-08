@@ -17,36 +17,46 @@ export const FormInput: React.FC<FormInputChange> = ({value, handleChange, place
     const isPass = type === "password";
     const isTel = type === 'tel';
     const [isVisible, setIsVisible] = React.useState(!isPass)
+    const [showError, setShowError] = React.useState(false)
     const inputType = isPass ? (isVisible ? "text" : "password") : "tel"
 
+    const shouldShowError = showError && error;
+
     return (
-        <div className={`${styles["input-container"]} ${error ? styles["error"] : ""}`}>
-            <Image
-                src={`/${icon}.svg`}
-                alt={`/${icon} form input`}
-                width={18}
-                height={18}
-                priority
-            />
-            {isTel && (<div className={styles["phone-prefix"]}>
-                +52
-            </div>)}
-            <input 
-                value={value}
-                onChange={handleChange}
-                className={styles.input}
-                type={inputType}
-                placeholder={placeholder}
-                name={name}
-            />    
-            {isPass && (<div className={styles["toggle-visibility"]} onClick={() => {setIsVisible(!isVisible)}}>
+        <div style={{position: "relative"}}>
+            <div className={`${styles["input-container"]} ${error ? styles["error"] : ""}`}>
                 <Image
-                    src="/eye.svg"
-                    alt="show password icon"
+                    src={`/${icon}.svg`}
+                    alt={`/${icon} form input`}
                     width={18}
                     height={18}
+                    priority
                 />
-            </div>)}
+                {isTel && (<div className={styles["phone-prefix"]}>
+                    +52
+                </div>)}
+                <input 
+                    value={value}
+                    onChange={handleChange}
+                    className={styles.input}
+                    type={inputType}
+                    placeholder={placeholder}
+                    name={name}
+                    onFocus={() => {setShowError(true)}}
+                    onBlur={() => {setShowError(false)}}
+                />    
+                {isPass && (<div className={styles["toggle-visibility"]} onClick={() => {setIsVisible(!isVisible)}}>
+                    <Image
+                        src="/eye.svg"
+                        alt="show password icon"
+                        width={18}
+                        height={18}
+                    />
+                </div>)}
+            </div>
+            <div className={`${styles.tooltip} ${shouldShowError ? styles.visible : ""}`}>
+                {error}
+            </div>
         </div>
     )
 }

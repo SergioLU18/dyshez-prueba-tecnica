@@ -16,7 +16,7 @@ export default function LoginPage() {
     
     const [formData, setformData] = React.useState(initialFormData)
     const [formErrors, setFormErrors] = React.useState(initialFormErrors)
-    const [isLogin, setIsLogin] = React.useState(true);
+    const [isLogin, setIsLogin] = React.useState(false);
     const [forgotPassword, setForgotPassword] = React.useState(false);
     const [resetSent, setResetSent] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
@@ -41,21 +41,34 @@ export default function LoginPage() {
         setIsLogin(!isLogin);
     }
 
-    const canSubmit = React.useMemo(() => {
-        if(loading) return false
-        if(isLogin) {
-            return formData.email && (forgotPassword || (!forgotPassword && formData.password))
-        }
-        else {
-            return formData.names && formData.lastNames && formData.mobile && formData.email && formData.password && formData.confirmPassword
-        }
-    }, [loading, isLogin, forgotPassword, formData])
-
     const checkFormErrors = () => {
         const newErrors = {...initialFormErrors};
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
         if(!emailRegex.test(formData.email)) {
-            newErrors.email = "Please, enter a valid eamil."
+            newErrors.email = "Please, enter a valid eamil"
+        }
+        if(!formData.password) {
+            newErrors.password = "Please, enter a password"
+        }
+        if(!isLogin) {
+            if(!formData.names) {
+                newErrors.names = "Please, enter your name(s)"
+            }
+            if(!formData.lastNames) {
+                newErrors.lastNames = "Please, enter your last name(s)"
+            }
+            if(formData.password !== formData.confirmPassword) {
+                newErrors.password = newErrors.confirmPassword = "Passwords must match"
+            }
+            if(formData.password.length < 6) {
+                newErrors.password = "Password must be at least 6 characters"
+            }
+            if(formData.confirmPassword.length < 6) {
+                newErrors.confirmPassword = "Password must be at least 6 characters"
+            }
+            if(formData.mobile.length < 10) {
+                newErrors.mobile = "Please, enter a valid phone number"
+            }
         }
         return newErrors;
     }
@@ -107,6 +120,7 @@ export default function LoginPage() {
         else if(name === "mobile" || name === "phone") {
             processedValue = value.replace(/\D/g, "").slice(0, 10)
         }
+        // Assume user corrected their error and remove it
         setFormErrors((prevErrors) => ({
             ...prevErrors,
             [name]: ""
@@ -175,6 +189,7 @@ export default function LoginPage() {
                                     type="password"
                                     handleChange={handleFormChange} 
                                     icon="password"
+                                    error={formErrors.password}
                                 />
                             )}
                             {!forgotPassword && <p className={styles["login-error-message"]}>{submitError}</p>}
@@ -188,6 +203,7 @@ export default function LoginPage() {
                                 type="text"
                                 handleChange={handleFormChange}
                                 icon="user"
+                                error={formErrors.names}
                             />
                             <FormInput
                                 value={formData.lastNames}
@@ -196,6 +212,7 @@ export default function LoginPage() {
                                 type="text"
                                 handleChange={handleFormChange}
                                 icon="user"
+                                error={formErrors.lastNames}
                             />
                             <FormInput
                                 value={formatPhoneNumber(formData.mobile)}
@@ -204,6 +221,7 @@ export default function LoginPage() {
                                 type="tel"
                                 handleChange={handleFormChange}
                                 icon="mobile"
+                                error={formErrors.mobile}
                             />
                             <FormInput
                                 value={formData.phone}
@@ -228,6 +246,7 @@ export default function LoginPage() {
                                 type="text"
                                 handleChange={handleFormChange}
                                 icon="email"
+                                error={formErrors.email}
                             />
                             <FormInput
                                 value={formData.password}
@@ -236,6 +255,7 @@ export default function LoginPage() {
                                 type="password"
                                 handleChange={handleFormChange}
                                 icon="password"
+                                error={formErrors.password}
                             />
                             <FormInput
                                 value={formData.confirmPassword}
@@ -244,6 +264,7 @@ export default function LoginPage() {
                                 type="password"
                                 handleChange={handleFormChange}
                                 icon="password"
+                                error={formErrors.confirmPassword}
                             />
                         </form>)}
                         {!isLogin && (

@@ -10,7 +10,7 @@ import { login, resetPassword } from "./actions";
 import { Button } from "@/components/button";
 import { OTPInput } from "@/components/otpInput";
 import { FormInput } from "@/components/formInput";
-import { isNumber } from "../../../utils/helpers";
+import { isNumber, formatPhoneNumber } from "../../../utils/helpers";
 
 export default function LoginPage() {
     
@@ -69,12 +69,20 @@ export default function LoginPage() {
     }
     
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        console.log(value);
-        if(name === "password" && value[value.length - 1] == " ") return;
+        const { name, value } = event.target
+        const n = value.length
+        let processedValue = value
+        // Prevent users from adding spaces to fields that shouldn't have them
+        if(name === "password" || name === "confirmPassword" || name === "email") {
+            processedValue = processedValue.replace(/\s+/g, '');
+        }
+        // Remove non numeric characters and limit to 10 numbers
+        else if(name === "mobile" || name === "phone") {
+            processedValue = value.replace(/\D/g, "").slice(0, 10)
+        }
         setformData((prevFormData) => ({
             ...prevFormData,
-            [name]: value,
+            [name]: processedValue,
         }));
     };
         
@@ -159,7 +167,7 @@ export default function LoginPage() {
                                 icon="user"
                             />
                             <FormInput
-                                value={formData.mobile}
+                                value={formatPhoneNumber(formData.mobile)}
                                 placeholder="123 456 7890*"
                                 name="mobile"
                                 type="tel"

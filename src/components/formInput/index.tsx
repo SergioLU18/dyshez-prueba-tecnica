@@ -16,7 +16,7 @@ export const FormInput: React.FC<FormInputChange> = ({value, handleChange, place
     const isPass = type === "password";
     const isTel = type === 'tel';
     const [isVisible, setIsVisible] = React.useState(!isPass)
-    const inputType = !isTel ? type : isVisible ? "text" : "password"
+    const inputType = isPass ? (isVisible ? "text" : "password") : "tel" 
 
     return (
         <div className={styles["input-container"]}>

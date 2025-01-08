@@ -222,6 +222,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .page_checkbox-container__Qi__m.page_checked__UtFh7 {
@@ -413,12 +414,16 @@
 .component_input-container__8bHYA {
     border: #E7E7E9D9 2px solid;
     padding: 13px 20px;
-    border-radius: 108px;
+    border-radius: 15px;
     display: flex;
     flex-direction: row;
     gap: 8px;
     align-items: center;
     font-size: 14px;
+}
+
+.component_input-container__8bHYA.component_error__SuAtL {
+    border: #FF0000 2px solid;
 }
 
 .component_input__bpiBf {

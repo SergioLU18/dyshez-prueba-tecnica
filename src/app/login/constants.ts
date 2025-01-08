@@ -28,3 +28,12 @@ export const initialFormData = {
     phone: "",
     website: "",
 }
+
+export const initialFormErrors = {
+    email: "",
+    password: "",
+    confirmPassword: "",
+    names: "",
+    lastNames: "",
+    mobile: "",
+}

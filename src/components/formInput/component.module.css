@@ -1,12 +1,16 @@
 .input-container {
     border: #E7E7E9D9 2px solid;
     padding: 13px 20px;
-    border-radius: 108px;
+    border-radius: 15px;
     display: flex;
     flex-direction: row;
     gap: 8px;
     align-items: center;
     font-size: 14px;
+}
+
+.input-container.error {
+    border: #FF0000 2px solid;
 }
 
 .input {

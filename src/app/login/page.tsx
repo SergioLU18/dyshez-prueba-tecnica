@@ -4,18 +4,19 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import { Welcome } from "@/components/welcome";
 import { PageContainer } from "@/components/pageContainer";
-import { ThirdPartyLogin, thirdPartyLogins, initialFormData } from './constants';
+import { ThirdPartyLogin, thirdPartyLogins, initialFormData, initialFormErrors } from './constants';
 import * as React from 'react';
 import { login, resetPassword } from "./actions";
 import { Button } from "@/components/button";
 import { OTPInput } from "@/components/otpInput";
 import { FormInput } from "@/components/formInput";
-import { isNumber, formatPhoneNumber } from "../../../utils/helpers";
+import { formatPhoneNumber } from "../../../utils/helpers";
 
 export default function LoginPage() {
     
     const [formData, setformData] = React.useState(initialFormData)
-    const [isLogin, setIsLogin] = React.useState(false);
+    const [formErrors, setFormErrors] = React.useState(initialFormErrors)
+    const [isLogin, setIsLogin] = React.useState(true);
     const [forgotPassword, setForgotPassword] = React.useState(false);
     const [resetSent, setResetSent] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
@@ -36,10 +37,37 @@ export default function LoginPage() {
     
     const toggleIsLogin = () => {
         setformData(initialFormData)
+        setFormErrors(initialFormErrors)
         setIsLogin(!isLogin);
+    }
+
+    const canSubmit = React.useMemo(() => {
+        if(loading) return false
+        if(isLogin) {
+            return formData.email && (forgotPassword || (!forgotPassword && formData.password))
+        }
+        else {
+            return formData.names && formData.lastNames && formData.mobile && formData.email && formData.password && formData.confirmPassword
+        }
+    }, [loading, isLogin, forgotPassword, formData])
+
+    const checkFormErrors = () => {
+        const newErrors = {...initialFormErrors};
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        if(!emailRegex.test(formData.email)) {
+            newErrors.email = "Please, enter a valid eamil."
+        }
+        return newErrors;
     }
     
     const handleSubmit = async () => {
+        const newErrors = checkFormErrors();
+        setFormErrors((prevErrors) => ({
+            ...prevErrors,
+            ...newErrors
+        }))
+        // If any errors were found, prevent submit
+        if(Object.values(newErrors).some((value) => value.trim() !== '')) return
         setSubmitError("");
         setLoading(true);
         const formElement = loginFormRef.current as HTMLFormElement
@@ -48,7 +76,7 @@ export default function LoginPage() {
             if(!forgotPassword) {
                 const error = await login(formData);
                 if(error) {
-                    setSubmitError("We couldn't find an account with the provided credentials. Please try again.");
+                    setSubmitError(error.message);
                 }
             }
             else {
@@ -58,7 +86,7 @@ export default function LoginPage() {
                     setResetSent(true);
                 }
                 else {
-                    setSubmitError("Sorry, something went wrong. Please try again.");
+                    setSubmitError(error.message);
                 }
             }
         }
@@ -70,7 +98,6 @@ export default function LoginPage() {
     
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
-        const n = value.length
         let processedValue = value
         // Prevent users from adding spaces to fields that shouldn't have them
         if(name === "password" || name === "confirmPassword" || name === "email") {
@@ -80,13 +107,16 @@ export default function LoginPage() {
         else if(name === "mobile" || name === "phone") {
             processedValue = value.replace(/\D/g, "").slice(0, 10)
         }
+        setFormErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: ""
+        }))
         setformData((prevFormData) => ({
             ...prevFormData,
             [name]: processedValue,
         }));
     };
-        
-    const submitButtonDisabled = loading || !formData.email || (!forgotPassword && !formData.password);
+
     const showThirdPartyLogins = !forgotPassword && !resetSent && isLogin;
     
     const headerMessage = isLogin ? "Log in with your e-mail or your phone number." : "Join the revolution! To begin using our services, enter your personal information below and join the Dyshez movement."
@@ -125,9 +155,9 @@ export default function LoginPage() {
                         </div>
                     )}
 
-                    {!resetSent && (<form className={styles["login-form"]} ref={loginFormRef}>
+                    {!resetSent && (<div className={styles["login-form"]}>
                         {/* LOGIN VIEW */}
-                        {isLogin && (<div className={styles["login-inputs"]}>
+                        {isLogin && (<form className={styles["login-inputs"]} ref={loginFormRef}>
                             <FormInput 
                                 value={formData.email} 
                                 placeholder={`${!forgotPassword ? "E-mail or phone number" : "E-mail*"}`}
@@ -135,6 +165,7 @@ export default function LoginPage() {
                                 type="text"
                                 handleChange={handleFormChange} 
                                 icon="email"
+                                error={formErrors.email}
                             />
                             {!forgotPassword && (
                                 <FormInput 
@@ -147,7 +178,7 @@ export default function LoginPage() {
                                 />
                             )}
                             {!forgotPassword && <p className={styles["login-error-message"]}>{submitError}</p>}
-                        </div>)}
+                        </form>)}
                         {/* SIGNUP VIEW */}
                         {!isLogin && (<form className={styles["signup-inputs"]} ref={signupFormRef}>
                             <FormInput
@@ -230,7 +261,7 @@ export default function LoginPage() {
                             </div>
                         )}
                         <div className={styles["login-button-container"]}>
-                            <Button primaryAction={handleSubmit} label={submitButtonLabel} disabled={submitButtonDisabled} />
+                            <Button primaryAction={handleSubmit} label={submitButtonLabel} disabled={loading} />
                             <div className={styles["forgot-password"]}>
                                 {subActionLabel}
                                 {isLogin && (<p onClick={toggleForgotPassword}>
@@ -238,7 +269,7 @@ export default function LoginPage() {
                                 </p>)}
                             </div>
                         </div>
-                    </form>)}
+                    </div>)}
 
                     {showThirdPartyLogins && (<div className={styles["login-socials"]}>
                         {thirdPartyLogins.map((thirdParty: ThirdPartyLogin, index: number) => (

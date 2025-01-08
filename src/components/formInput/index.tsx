@@ -9,17 +9,18 @@ interface FormInputChange {
     name: string;
     type: 'text' | 'password' | 'tel';
     icon: string;
+    error?: string;
 }
 
-export const FormInput: React.FC<FormInputChange> = ({value, handleChange, placeholder, name, type, icon}) => {
+export const FormInput: React.FC<FormInputChange> = ({value, handleChange, placeholder, name, type, icon, error}) => {
 
     const isPass = type === "password";
     const isTel = type === 'tel';
     const [isVisible, setIsVisible] = React.useState(!isPass)
-    const inputType = isPass ? (isVisible ? "text" : "password") : "tel" 
+    const inputType = isPass ? (isVisible ? "text" : "password") : "tel"
 
     return (
-        <div className={styles["input-container"]}>
+        <div className={`${styles["input-container"]} ${error ? styles["error"] : ""}`}>
             <Image
                 src={`/${icon}.svg`}
                 alt={`/${icon} form input`}

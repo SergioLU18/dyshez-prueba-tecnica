@@ -1,7 +1,3 @@
-export function isNumber(char: string) {
-    return /^\d$/.test(char);
-}
-
 export function formatPhoneNumber(phone: string) {
     const cleaned = phone.replace(/\D/g, ""); 
     const limited = cleaned.slice(0, 10);

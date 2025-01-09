@@ -41,6 +41,7 @@ export default function LoginPage() {
         setFormErrors(initialFormErrors)
         setIsLogin(!isLogin);
         setSubmitError("")
+        setTermsChecked(false)
     }
 
     const checkFormErrors = () => {
@@ -71,8 +72,22 @@ export default function LoginPage() {
             if(formData.mobile.length < 10) {
                 newErrors.mobile = "Please, enter a valid phone number"
             }
+            if(formData.phone.length > 0 && formData.phone.length < 10) {
+                newErrors.phone = "Please, enter a valid phone number"
+            }
+            if(!termsChecked) {
+                newErrors.terms = "Please, agree to the terms and conditions"
+            }
         }
         return newErrors;
+    }
+
+    const toggleTermsChecked = () => {
+        setTermsChecked(!termsChecked);
+        setFormErrors((prevErrors) => ({
+            ...prevErrors,
+            terms: ""
+        }))
     }
     
     const handleSubmit = async () => {
@@ -236,6 +251,7 @@ export default function LoginPage() {
                                 type="tel"
                                 handleChange={handleFormChange}
                                 icon="phone"
+                                error={formErrors.phone}
                             /> 
                             <FormInput
                                 value={formData.website}
@@ -276,7 +292,7 @@ export default function LoginPage() {
                         {!forgotPassword && (<p className={styles["error-message"]}>{submitError}</p>)}
                         {!isLogin && (
                             <div className={styles["terms"]}>
-                                <div className={`${styles["checkbox-container"]} ${termsChecked ? styles["checked"] : ""}`} onClick={() => {setTermsChecked(!termsChecked)}}>
+                                <div className={`${styles["checkbox-container"]} ${termsChecked ? styles["checked"] : formErrors.terms ? styles["error"] : ""}`} onClick={toggleTermsChecked}>
                                     {termsChecked && (<Image
                                         src="./check.svg"
                                         alt="check icon"

@@ -36,4 +36,6 @@ export const initialFormErrors = {
     names: "",
     lastNames: "",
     mobile: "",
+    phone: "",
+    terms: "",
 }

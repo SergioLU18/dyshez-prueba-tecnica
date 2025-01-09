@@ -44,11 +44,55 @@ export default function LoginPage() {
         setTermsChecked(false)
     }
 
+    const toggleTermsChecked = () => {
+        setTermsChecked(!termsChecked);
+        setFormErrors((prevErrors) => ({
+            ...prevErrors,
+            terms: ""
+        }))
+    }
+
+    const handleEnterPress = (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            handleSubmit()
+        }
+      };
+
+    React.useEffect(() => {
+        window.addEventListener('keydown', handleEnterPress);
+    
+        return () => {
+            window.removeEventListener('keydown', handleEnterPress);
+        };
+      }, [formData]);
+
+    const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target
+        let processedValue = value
+        // Prevent users from adding spaces to fields that shouldn't have them
+        if(name === "password" || name === "confirmPassword" || name === "email") {
+            processedValue = processedValue.replace(/\s+/g, '');
+        }
+        // Remove non numeric characters and limit to 10 numbers
+        else if(name === "mobile" || name === "phone") {
+            processedValue = value.replace(/\D/g, "").slice(0, 10)
+        }
+        // Assume user corrected their error and remove it
+        setFormErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: ""
+        }))
+        setformData((prevFormData) => ({
+            ...prevFormData,
+            [name]: processedValue,
+        }));
+    };
+
     const checkFormErrors = () => {
         const newErrors = {...initialFormErrors};
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
         if(!emailRegex.test(formData.email)) {
-            newErrors.email = "Please, enter a valid eamil"
+            newErrors.email = "Please, enter a valid email"
         }
         if(!formData.password && !forgotPassword) {
             newErrors.password = "Please, enter a password"
@@ -80,14 +124,6 @@ export default function LoginPage() {
             }
         }
         return newErrors;
-    }
-
-    const toggleTermsChecked = () => {
-        setTermsChecked(!termsChecked);
-        setFormErrors((prevErrors) => ({
-            ...prevErrors,
-            terms: ""
-        }))
     }
     
     const handleSubmit = async () => {
@@ -130,28 +166,6 @@ export default function LoginPage() {
         }
         setLoading(false)
     }
-    
-    const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target
-        let processedValue = value
-        // Prevent users from adding spaces to fields that shouldn't have them
-        if(name === "password" || name === "confirmPassword" || name === "email") {
-            processedValue = processedValue.replace(/\s+/g, '');
-        }
-        // Remove non numeric characters and limit to 10 numbers
-        else if(name === "mobile" || name === "phone") {
-            processedValue = value.replace(/\D/g, "").slice(0, 10)
-        }
-        // Assume user corrected their error and remove it
-        setFormErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: ""
-        }))
-        setformData((prevFormData) => ({
-            ...prevFormData,
-            [name]: processedValue,
-        }));
-    };
 
     const showThirdPartyLogins = !forgotPassword && !resetSent && isLogin;
     

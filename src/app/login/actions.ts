@@ -26,10 +26,10 @@ export async function login(formData: FormData) {
         password: formData.get('password') as string,
     }
 
-    const { error } = await supabase.auth.signInWithPassword(data)
+    const { error: signInError } = await supabase.auth.signInWithPassword(data)
 
-    if (error) {
-        return error
+    if (signInError) {
+        return signInError
     }
 
     redirect('/')
@@ -39,13 +39,27 @@ export async function signup(formData: FormData) {
 
     const supabase = await createClient()
 
-    const { error } = await supabase.auth.signUp({
+    const { data: signupData, error: signupError } = await supabase.auth.signUp({
         email: formData.get('email') as string,
         password: formData.get('password') as string,
     })
 
-    if (error) {
-        return error
+    if (signupError) {
+        return signupError
+    }
+
+    const { error: profileError } = await supabase.from("profile").insert({
+        user_id: signupData.user?.id,
+        names: formData.get("names") as string,
+        last_names: formData.get("lastNames") as string,
+        website: formData.get("website") as string,
+        email: formData.get("email") as string,
+        mobile_phone: `+52${(formData.get("mobile") as string).replace(/\s+/g, '')}`,
+        secondary_phone: `+52${(formData.get("phone") as string).replace(/\s+/g, '')}`
+    })
+
+    if(profileError) {
+        return profileError
     }
 
 }

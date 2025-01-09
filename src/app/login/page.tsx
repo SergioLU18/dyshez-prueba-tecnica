@@ -230,7 +230,7 @@ export default function LoginPage() {
                                 error={formErrors.mobile}
                             />
                             <FormInput
-                                value={formData.phone}
+                                value={formatPhoneNumber(formData.phone)}
                                 placeholder="123 456 7890"
                                 name="phone"
                                 type="tel"

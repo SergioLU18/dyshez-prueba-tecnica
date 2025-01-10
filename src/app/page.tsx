@@ -178,9 +178,9 @@ const Home: React.FC = () => {
                 </div>
               ))}
           </div>
-          {/* <button className={`${styles.button} ${styles.logout}`} onClick={logout}>
+          <button className={`${styles.button} ${styles.logout}`} onClick={logout}>
             Logout
-          </button> */}
+          </button>
 
 
           {/* New Task Modal */}

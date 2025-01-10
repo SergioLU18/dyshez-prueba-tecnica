@@ -91,13 +91,17 @@ export default function LoginPage() {
     const checkFormErrors = () => {
         const newErrors = {...initialFormErrors};
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-        if(!emailRegex.test(formData.email)) {
-            newErrors.email = "Please, enter a valid email"
+        const phoneRegex = /^\d+$/;
+        if(!emailRegex.test(formData.email) && (!phoneRegex.test(formData.email) && formData.email.length !== 10)) {
+            newErrors.email = "Please, enter a valid email or phone"
         }
         if(!formData.password && !forgotPassword) {
             newErrors.password = "Please, enter a password"
         }
         if(!isLogin) {
+            if(!emailRegex.test(formData.email)) {
+                newErrors.email = "Please, enter a valid email"
+            }
             if(!formData.names) {
                 newErrors.names = "Please, enter your name(s)"
             }
@@ -214,7 +218,7 @@ export default function LoginPage() {
                                 name="email"
                                 type="text"
                                 handleChange={handleFormChange} 
-                                icon="email"
+                                icon={isLogin ? "user" : "email"}
                                 error={formErrors.email}
                             />
                             {!forgotPassword && (

@@ -17,6 +17,7 @@
 
 .container.column {
   flex-direction: column;
+  gap: 32px;
 }
   
   @media (prefers-color-scheme: dark) {

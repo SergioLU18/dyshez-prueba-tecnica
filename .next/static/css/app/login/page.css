@@ -271,6 +271,7 @@
 
 .component_container__pUVxA.component_column__GIuS4 {
   flex-direction: column;
+  gap: 32px;
 }
   
   @media (prefers-color-scheme: dark) {

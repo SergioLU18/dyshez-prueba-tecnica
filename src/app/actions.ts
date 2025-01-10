@@ -32,6 +32,25 @@ export async function getUserData() {
 
 }
 
+export async function createUserTask(userTask: UserTask, user_id?: string) {
+
+    const supabase = await createClient()
+
+    const { error } = await supabase.from("task").insert({
+        user_id: user_id,
+        created_at: userTask.createdAt,
+        description: userTask.description,
+        completed: false,
+        completed_at: null,
+        title: userTask.title
+    })
+
+    if(error) {
+        return error
+    }
+
+}
+
 export async function getUserTasks(user_id: string) {
 
     const supabase = await createClient()

@@ -10,5 +10,5 @@ export type UserTask = {
     title: string,
     description: string,
     completed: boolean,
-    completedAt: Date
+    completedAt: Date | null
 }

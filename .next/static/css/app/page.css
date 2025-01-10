@@ -34,6 +34,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 16px;
 }
 
 .page_task__XJDAK {
@@ -43,6 +44,11 @@
     gap: 16px;
     display: flex;
     flex-direction: column;
+}
+
+.page_task__XJDAK.page_completed__2On9G {
+    background-color: #f6f6f6;
+    text-decoration: line-through;
 }
 
 .page_task-title__5rJ0k {
@@ -58,6 +64,93 @@
 .page_task-details__52D2b {
     color: #0C0C0C;
     font-weight: 200;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.page_task-actions__NqEQr {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.page_task-button__VF1vE {
+    all: unset;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #e3036f;
+    padding: 8px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.page_task-button__VF1vE.page_destructive__CJhtM {
+    background-color: #FF0000;
+}
+
+.page_modal__OJIkq {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.page_modal-content__y2___ {
+    position:fixed;
+    background: white;
+    width: 80%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding: 32px;
+    border-radius: 10px;
+    max-width: 650px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.page_modal-header__qj3rJ {
+    color: #e3036f;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.page_input___cVLA {
+    all: unset;
+    border: #E7E7E9D9 2px solid;
+    padding: 13px 20px;
+    caret-color: #e3036f; 
+    color: #0C0C0C;
+    border-radius: 15px;
+    overflow-wrap: break-word;
+    word-wrap: break-word; 
+    white-space: pre-wrap;
+    resize: none;
+}
+
+.page_loading__Q7rym {
+    background-color: #FFFFFF;
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.page_modal-buttons__iPZJx {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: space-between;
 }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/pageContainer/component.module.css ***!
@@ -81,6 +174,7 @@
 
 .component_container__pUVxA.component_column__GIuS4 {
   flex-direction: column;
+  gap: 32px;
 }
   
   @media (prefers-color-scheme: dark) {
@@ -93,3 +187,42 @@
       --button-secondary-hover: #1a1a1a;
     }
   }
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/loadingDots/component.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.component_loading-dots__pBNQk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; 
+  }
+  
+  .component_dot__DH2tw {
+    width: 10px;
+    height: 10px;
+    background-color: #333; 
+    border-radius: 50%; 
+    animation: component_bounce__GUhdS 1s infinite ease-in-out;
+  }
+  
+  .component_dot__DH2tw:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .component_dot__DH2tw:nth-child(2) {
+    animation-delay: 0.3s; 
+  }
+  
+  .component_dot__DH2tw:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes component_bounce__GUhdS {
+    0%, 80%, 100% {
+      transform: translateY(0); 
+    }
+    40% {
+      transform: translateY(-10px); 
+    }
+  }
+  

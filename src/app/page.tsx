@@ -1,7 +1,7 @@
 'use client'
 import { redirect } from 'next/navigation';
 import * as React from 'react';
-import { logout, getUserData, getUserTasks, createUserTask } from './actions';
+import { logout, getUserData, getUserTasks, createUserTask, completeUserTask, deleteUserTask } from './actions';
 import styles from './page.module.css'
 import { PageContainer } from '@/components/pageContainer';
 import { UserProfile, UserTask } from '@/types';
@@ -16,6 +16,18 @@ const Home: React.FC = () => {
   const [newTaskTitle, setNewTaskTitle] = React.useState("");
   const [newTaskDescription, setNewTaskDescription] = React.useState("")
 
+  const customTaskSort = (taskArray: UserTask[]) => {
+    return taskArray.sort((a, b) => {
+      if(!a.completed && !b.completed) {
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+      }
+      else if(a.completed && b.completed) {
+        return new Date(a.completedAt!).getTime() - new Date(b.completedAt!).getTime();
+      }
+      return Number(a.completed) - Number(b.completed)
+    })
+  }
+
   const initializeUser = async () => {
     const profileData = await getUserData();
     setUserProfile(profileData)
@@ -29,26 +41,44 @@ const Home: React.FC = () => {
     setNewTaskDescription(event.target.value)
   }
 
-  const handleDeleteTask = (task: UserTask) => {
-
+  const handleDeleteTask = async (task: UserTask) => {
+    const error = await deleteUserTask(task);
+    if(error) {
+      // TODO: Handle error logic
+    }
+    else {
+      const newTasks = [...tasks];
+      const index = newTasks.indexOf(task);
+      newTasks.splice(index, 1);
+      setTasks(newTasks)
+    }
   }
 
-  const handleCompleteTask = (task: UserTask) => {
-    const newTasks = [...tasks];
-    const index = newTasks.indexOf(task);
-    newTasks.splice(index, 1);
-    newTasks.push({
-      ...task,
-      completedAt: new Date(),
-      completed: true
-    })
-    setTasks(newTasks)
+  const handleCompleteTask = async (task: UserTask) => {
+
+    const error = await completeUserTask(task)
+
+    if(error) {
+      //TODO: Handle error logic
+    }
+    else {
+      const newTasks = [...tasks];
+      const index = newTasks.indexOf(task);
+      newTasks.splice(index, 1);
+      newTasks.push({
+        ...task,
+        completedAt: new Date(),
+        completed: true
+      })
+      setTasks(newTasks)
+    }
   }
 
   const handleCreateTask = async () => {
     if(!newTaskDescription || !newTaskTitle) return
     
     const newTask = {
+      id: null,
       createdAt: new Date(),
       title: newTaskTitle,
       description: newTaskDescription,
@@ -56,14 +86,16 @@ const Home: React.FC = () => {
       completedAt: null
     }
     
-    const error = await createUserTask(newTask, userProfile?.userId)
+    const { data, error }= await createUserTask(newTask, userProfile?.userId)
     
-    if(error) {
+    if(error || !data) {
       // TODO: Handle error logic
     }
     else {
       // If no error also create task on FE
-      setTasks([...tasks, newTask])
+      newTask.id = data[0].id
+      
+      setTasks(customTaskSort([...tasks, newTask]))
       handleModalClose()
     }
   }
@@ -80,7 +112,7 @@ const Home: React.FC = () => {
     if(error) {
       // TODO: Add logic to set error toast
     }
-    setTasks(processedTasks)
+    setTasks(customTaskSort(processedTasks))
   }
 
   React.useEffect(() => {

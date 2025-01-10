@@ -6,6 +6,7 @@ export type UserProfile = {
 }
 
 export type UserTask = {
+    id: number | null,
     createdAt: Date,
     title: string,
     description: string,

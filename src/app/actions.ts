@@ -32,22 +32,40 @@ export async function getUserData() {
 
 }
 
+export async function deleteUserTask(userTask: UserTask) {
+
+    const supabase = await createClient()
+
+    const { error } = await supabase.from("task").delete().eq("id", userTask.id)
+
+    return error;
+
+}
+
+export async function completeUserTask(userTask: UserTask) {
+
+    const supabase = await createClient()
+
+    const { error } = await supabase.from("task").update({completed: true, completed_at: new Date()}).eq("id", userTask.id)
+
+    return error;
+
+}
+
 export async function createUserTask(userTask: UserTask, user_id?: string) {
 
     const supabase = await createClient()
 
-    const { error } = await supabase.from("task").insert({
+    const { data, error } = await supabase.from("task").insert({
         user_id: user_id,
         created_at: userTask.createdAt,
         description: userTask.description,
         completed: false,
         completed_at: null,
         title: userTask.title
-    })
+    }).select()
 
-    if(error) {
-        return error
-    }
+    return { data, error}
 
 }
 
@@ -63,6 +81,7 @@ export async function getUserTasks(user_id: string) {
         return { processedTasks, error }
     }
     processedTasks = data.map((task) => ({
+        id: task.id,
         createdAt: new Date(task.created_at),
         description: task.description,
         title: task.title,

@@ -1,33 +1,67 @@
 'use client'
 import { redirect } from 'next/navigation';
 import * as React from 'react';
-import { logout, getUserEmail } from './actions';
-
+import { logout, getUserData, getUserTasks } from './actions';
+import styles from './page.module.css'
+import { PageContainer } from '@/components/pageContainer';
+import { UserProfile, UserTask } from '@/types';
 
 const Home: React.FC = () => {
 
-  const [email, setEmail] = React.useState("")
+  const [userProfile, setUserProfile] = React.useState<UserProfile>()
+  const [tasks, setTasks] = React.useState<UserTask[]>([])
+
+  const initializeUser = async () => {
+    const profileData = await getUserData();
+    setUserProfile(profileData)
+  }
+
+  const initializeUserTasks = async () => {
+    if(!userProfile) return
+    const {processedTasks, error} = await getUserTasks(userProfile.userId)
+    if(error) {
+      // TODO: Add logic to set error toast
+    }
+    setTasks(processedTasks)
+  }
 
   React.useEffect(() => {
-    getUserEmail().then((data) => {
-      if (!data || typeof data !== 'string') {
-        redirect('/login')
-      }
-      setEmail(data);
-    })
+    initializeUserTasks()
+  }, [userProfile])
+
+  React.useEffect(() => {
+    initializeUser()
   }, [])
 
-  if(!email) return;
+  if(!userProfile) return;
 
   return (
-    <div>
-      <p>
-      Hello {email}
-      </p>
-      <button onClick={logout}>
-        Logout
-      </button>
-    </div>
+    <PageContainer flexDirection='column'>
+          <div className={styles.header}>
+              Welcome back, {userProfile.names}!
+              <button className={`${styles.button} ${styles.new}`} onClick={() => {console.log("Add new task")}}>
+                New Task
+              </button>
+          </div>
+          <div className={styles.tasks}>
+              {tasks.map((task, index) => (
+                <div className={styles.task} id={`task ${index}`}>
+                  <div className={styles["task-title"]}>
+                      {task.title}
+                  </div>
+                  <div className={styles["task-description"]}>
+                      {task.description}
+                  </div>
+                  <div className={styles["task-details"]}>
+                      {task.createdAt.toDateString()}
+                  </div>
+                </div>
+              ))}
+          </div>
+          {/* <button className={`${styles.button} ${styles.logout}`} onClick={logout}>
+            Logout
+          </button> */}
+    </PageContainer>
     )
 }
 

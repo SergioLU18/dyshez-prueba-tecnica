@@ -32,6 +32,7 @@ export async function login(formData: FormData) {
         return signInError
     }
 
+    revalidatePath('/login')
     redirect('/')
 }
 

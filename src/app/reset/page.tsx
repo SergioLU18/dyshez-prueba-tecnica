@@ -8,12 +8,10 @@ import Image from "next/image";
 import styles from './page.module.css'
 import { Button } from "@/components/button";
 import { updateUserPassword } from "./actions";
-import { useSearchParams } from 'next/navigation';
 
 export default function LoginPage() {
 
     const router = useRouter();
-    const searchParams = useSearchParams();
     
     const [resetFormData, setResetFormData] = React.useState({
         password: "",

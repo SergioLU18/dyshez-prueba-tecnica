@@ -1,0 +1,57 @@
+.header {
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #e3036f;
+}
+
+.button {
+    all: unset;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #FFFFFF;
+    padding: 8px 16px;
+    font-size: 18px;
+    font-weight: 700;
+    width: fit-content;
+}
+
+.button.new {
+    background-color: #e3036f;
+}
+
+.button.logout {
+    background-color: #ff0000;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.task {
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+    padding: 24px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-title {
+    color: #e3036f;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.task-description {
+    color: #0C0C0C;
+}
+
+.task-details {
+    color: #0C0C0C;
+    font-weight: 200;
+}

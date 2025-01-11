@@ -92,7 +92,7 @@ export default function LoginPage() {
         const newErrors = {...initialFormErrors};
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
         const phoneRegex = /^\d+$/;
-        if(!emailRegex.test(formData.email) && (!phoneRegex.test(formData.email) && formData.email.length !== 10)) {
+        if(!emailRegex.test(formData.email) && (phoneRegex.test(formData.email) && formData.email.length !== 10)) {
             newErrors.email = "Please, enter a valid email or phone"
         }
         if(!formData.password && !forgotPassword) {
@@ -142,16 +142,20 @@ export default function LoginPage() {
         setLoading(true);
         if(isLogin) {
             const formElement = loginFormRef.current as HTMLFormElement
-            const formData = new FormData(formElement);
+            const data = new FormData(formElement);
             if(!forgotPassword) {
-                const error = await login(formData);
+                const phoneRegex = /^\d+$/;
+                const error = await login(data, phoneRegex.test(formData.email) ? 'phone' : 'email');
                 if(error) {
                     setSubmitError(error.message);
+                }
+                else {
+                    setOtpActive(true)
                 }
             }
             else {
                 setResetSent(true);
-                const error = await resetPassword(formData);
+                const error = await resetPassword(data);
                 if(!error) {
                     setResetSent(true);
                 }
@@ -162,10 +166,13 @@ export default function LoginPage() {
         }
         else {
             const formElement = signupFormRef.current as HTMLFormElement
-            const formData = new FormData(formElement)
-            const error = await signup(formData);
+            const data = new FormData(formElement)
+            const error = await signup(data);
             if(error) {
                 setSubmitError(error.message)
+            }
+            else {
+                // TODO: Show message that asks you to verify email
             }
         }
         setLoading(false)

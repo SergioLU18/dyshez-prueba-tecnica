@@ -2,7 +2,6 @@ import * as React from 'react';
 import styles from './component.module.css'
 import Image from "next/image";
 import LoadingDots from '../loadingDots';
-import { isNumber } from '../../../utils/helpers';
 
 interface OTPInputProps {
     length: number;
@@ -37,7 +36,8 @@ export const OTPInput: React.FC<OTPInputProps> = ({length}) => {
     
     const handleChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
-        if(!isNumber(value)) return
+        const phoneRegex = /^\d+$/;
+        if(!phoneRegex.test(value)) return
         const newOtp = [...otp]
         newOtp[index] = value;
         setOtp(newOtp);
@@ -95,7 +95,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({length}) => {
                     priority
                 />
                 OTP Verification
-                <p>Please, enter the OTP sent to your phone number</p>
+                <p>Please, enter the OTP sent to your pimary phone number</p>
             </div>
             {loading ? (<LoadingDots />) : (
                 <div className={styles["main-content"]}>

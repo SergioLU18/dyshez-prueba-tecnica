@@ -24,37 +24,6 @@
     font-weight: 500;
 }
 
-.input-container {
-    border: #E7E7E9D9 2px solid;
-    padding: 13px 20px;
-    border-radius: 108px;
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    align-items: center;
-}
-
-.input {
-    all: unset;
-    caret-color: #e3036f; 
-    color: #0C0C0C;
-    width: 100%;
-    text-align: left;
-}
-
-.input::placeholder {
-    color: #747474;
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: 500;
-}
-
-.toggle-visibility {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
 .error {
     color: #FF0000;
     font-size: 12px;

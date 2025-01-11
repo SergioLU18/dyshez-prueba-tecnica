@@ -1,7 +1,6 @@
 'use server'
 
 import { createClient } from '../../../utils/supabase/server'
-import { redirect } from 'next/navigation'
 
 
 export async function updateUserPassword(newPassword: string) {
@@ -13,10 +12,16 @@ export async function updateUserPassword(newPassword: string) {
     })
 
     if(error) {
-        return error.message
-    }
-    else {
-        redirect('/login')
-    }
-      
+        return error
+    }      
+}
+
+export async function exchangeCodeSession(code: string) {
+
+    const supabase = await createClient()
+
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+    return error
+
 }

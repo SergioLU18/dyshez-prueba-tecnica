@@ -146,7 +146,18 @@
     "40a497e0f812fd64f11c66b895467bc74a2bcf0815": {
       "workers": {
         "app/reset/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Freset%2Factions.ts%22%2C%5B%5B%2240a497e0f812fd64f11c66b895467bc74a2bcf0815%22%2C%22updateUserPassword%22%5D%5D%5D%5D&__client_imported__=true!",
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Freset%2Factions.ts%22%2C%5B%5B%2240a497e0f812fd64f11c66b895467bc74a2bcf0815%22%2C%22updateUserPassword%22%5D%2C%5B%2240deecaa6cedd73076e908116905813a26e3012c7e%22%2C%22exchangeCodeSession%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/reset/page": "action-browser"
+      }
+    },
+    "40deecaa6cedd73076e908116905813a26e3012c7e": {
+      "workers": {
+        "app/reset/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Freset%2Factions.ts%22%2C%5B%5B%2240a497e0f812fd64f11c66b895467bc74a2bcf0815%22%2C%22updateUserPassword%22%5D%2C%5B%2240deecaa6cedd73076e908116905813a26e3012c7e%22%2C%22exchangeCodeSession%22%5D%5D%5D%5D&__client_imported__=true!",
           "async": false
         }
       },

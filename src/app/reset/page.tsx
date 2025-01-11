@@ -3,23 +3,25 @@
 import { PageContainer } from "@/components/pageContainer";
 import { Welcome } from "@/components/welcome";
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
-import Image from "next/image";
+import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './page.module.css'
 import { Button } from "@/components/button";
-import { updateUserPassword } from "./actions";
+import { exchangeCodeSession, updateUserPassword } from "./actions";
+import { Toaster, toast } from 'sonner'
+import { FormInput } from "@/components/formInput";
 
 export default function ResetPage() {
 
     const router = useRouter();
-    
+    const searchParams = useSearchParams()
+    const code = searchParams.get('code');
+
     const [resetFormData, setResetFormData] = React.useState({
         password: "",
         confirmPassword: ""
     })
-    const [showPassword, setShowPassword] = React.useState(false)
-    const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState("");
+    const [passwordUpdated, setPasswordUpdated] = React.useState(false)
 
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = event.target;
@@ -31,71 +33,81 @@ export default function ResetPage() {
     };
 
     const handleSubmit = async () => {
-        if(resetFormData.password !== resetFormData.confirmPassword) {
-            setErrorMessage("Passwords don't match")
+        if(passwordUpdated) {
+            router.push('/login')
         }
         else {
-            let error = await updateUserPassword(resetFormData.password)
-            setErrorMessage(error);
+            if(resetFormData.password !== resetFormData.confirmPassword) {
+                setErrorMessage("Passwords don't match")
+            }
+            else {
+                let error = await updateUserPassword(resetFormData.password)
+                if(error) {
+                    toast.error(error.message)
+                }
+                else {
+                    toast.success("Your password was updated successfully!")
+                    setPasswordUpdated(true)
+                }
+            }
         }
     }
 
-    const buttonDisabled = !resetFormData.password || !resetFormData.confirmPassword
+    const handleCode = async () => {
+        if(!code) {
+            router.push('/login')
+        }
+        else {
+            const error = await exchangeCodeSession(code);
+            if(error) {
+                toast.error(error.message)
+            }
+        }
+    }
+
+    React.useEffect(() => {
+        if(code) {
+            handleCode()
+        }
+    }, [code])
+
+    const buttonDisabled = (!resetFormData.password || !resetFormData.confirmPassword) && !passwordUpdated
 
     return (
         <PageContainer>
             <Welcome />
             <div className={styles.card}>
                 <div className={styles["reset-password-message"]}>
-                    Reset Password
-                    <p>Enter new password</p>
+                    {passwordUpdated ? "Success!" : "Create new password"}
+                    {!passwordUpdated && <p>Enter new password</p>}
                 </div>
-                <div className={styles["input-container"]}>
-                    <Image
-                        src="/password.svg"
-                        alt="password icon"
-                        width={18}
-                        height={18}
-                        priority
-                    />
-                    <input value={resetFormData.password} onChange={handleFormChange} className={styles.input} type={showPassword ? "text" : "password"} placeholder="Password*" name="password" />    
-                    <div className={styles["toggle-visibility"]} onClick={() => {setShowPassword(!showPassword)}}>
-                        <Image
-                            src="/eye.svg"
-                            alt="show password icon"
-                            width={18}
-                            height={18}
-                        />
-                    </div> 
-                </div>
-                <div className={styles["input-container"]}>
-                    <Image
-                        src="/password.svg"
-                        alt="confirm password icon"
-                        width={18}
-                        height={18}
-                        priority
-                    />
-                    <input value={resetFormData.confirmPassword} onChange={handleFormChange} className={styles.input} type={showConfirmPassword ? "text" : "password"} placeholder="Confirm password*" name="confirmPassword"/>
-                    <div className={styles["toggle-visibility"]} onClick={() => {setShowConfirmPassword(!showConfirmPassword)}}>
-                        <Image
-                            src="/eye.svg"
-                            alt="show password icon"
-                            width={18}
-                            height={18}
-                        />
-                    </div> 
-                </div>
+                {!passwordUpdated && (<FormInput 
+                    value={resetFormData.password} 
+                    placeholder="New password"
+                    name="password"
+                    type="password"
+                    handleChange={handleFormChange} 
+                    icon="password"
+                />)}
+                {!passwordUpdated && (<FormInput 
+                    value={resetFormData.confirmPassword} 
+                    placeholder="Confirm new password"
+                    name="confirmPassword"
+                    type="password"
+                    handleChange={handleFormChange} 
+                    icon="password"
+                />)}
                 <p className={styles["error"]}>{errorMessage}</p>
                 <div className={styles["button-container"]}>
-                    <Button primaryAction={handleSubmit} label={"Continue"} disabled={buttonDisabled} />
-                    <div className={styles["remembered-password"]}>
+                    <Button primaryAction={handleSubmit} label={passwordUpdated ? "Back to login" : "Continue"} disabled={buttonDisabled} />
+                    {!passwordUpdated && (<div className={styles["remembered-password"]}>
                         {"Remembered your password? "}
                         <p onClick={() => {router.push("/login")}}>
                             Log in
                         </p>
-                    </div>
+                    </div>)}
                 </div>
+                <Toaster richColors/>
             </div>
         </PageContainer>
     );

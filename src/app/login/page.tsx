@@ -241,7 +241,7 @@ export default function LoginPage() {
                                 name="email"
                                 type="text"
                                 handleChange={handleFormChange} 
-                                icon={isLogin ? "user" : "email"}
+                                icon={isLogin && !forgotPassword ? "user" : "email"}
                                 error={formErrors.email}
                             />
                             {!forgotPassword && (

@@ -17,6 +17,12 @@
       "static/chunks/main-app.js",
       "static/css/app/login/page.css",
       "static/chunks/app/login/page.js"
+    ],
+    "/reset/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/reset/page.css",
+      "static/chunks/app/reset/page.js"
     ]
   }
 }

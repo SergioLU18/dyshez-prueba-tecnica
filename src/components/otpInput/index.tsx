@@ -2,17 +2,24 @@ import * as React from 'react';
 import styles from './component.module.css'
 import Image from "next/image";
 import LoadingDots from '../loadingDots';
+import { AuthError } from '@supabase/supabase-js';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 interface OTPInputProps {
     length: number;
+    onSubmit: (otp: string) => Promise<AuthError | undefined>;
+    handleResend: () => void;
 }
 
-export const OTPInput: React.FC<OTPInputProps> = ({length}) => {
+export const OTPInput: React.FC<OTPInputProps> = ({length, onSubmit, handleResend}) => {
 
     const [otp, setOtp] = React.useState(new Array(length).fill(""))
-    const [timer, setTimer] = React.useState<number | null>(null)
+    const [timer, setTimer] = React.useState<number | null>(10)
     const [loading, setLoading] = React.useState(false)
     const inputsRef = React.useRef<(HTMLInputElement | null)[]>([])
+
+    const router = useRouter()
 
     React.useEffect(() => {
         if(inputsRef.current[0]) {
@@ -45,11 +52,26 @@ export const OTPInput: React.FC<OTPInputProps> = ({length}) => {
         if(index < length - 1) {
             inputsRef.current[index + 1]?.focus()
         }
-        if(index === length - 1) {
-            // TODO: Add logic for autosubmit after OTP entered
-            setLoading(true)
+    }
+
+    const handleOtpComplete = async () => {
+        setLoading(true)
+        const error = await onSubmit(otp.join(""))
+        if(error) {
+            setLoading(false)
+            toast.error(error.message)
+            setOtp(new Array(length).fill(""))
+        }
+        else {
+            router.push('/')
         }
     }
+
+    React.useEffect(() => {
+        if(otp.join("").length === 6) {
+            handleOtpComplete()
+        }
+    }, [otp])
 
     const handleKeyDown = (index: number, event: React.KeyboardEvent<HTMLInputElement>) => {
         if(event.key === "Backspace") {
@@ -79,6 +101,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({length}) => {
     const handleResendOtp = () => {
         if(!canResendMessage) return
         setTimer(30);
+        handleResend()
     }
 
     const canResendMessage = timer === null

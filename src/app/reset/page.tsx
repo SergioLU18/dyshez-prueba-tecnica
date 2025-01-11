@@ -3,13 +3,13 @@
 import { PageContainer } from "@/components/pageContainer";
 import { Welcome } from "@/components/welcome";
 import * as React from 'react';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import styles from './page.module.css'
 import { Button } from "@/components/button";
 import { updateUserPassword } from "./actions";
 
-export default function LoginPage() {
+export default function ResetPage() {
 
     const router = useRouter();
     

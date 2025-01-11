@@ -153,7 +153,7 @@ const Home: React.FC = () => {
           </div>
           <div className={styles.tasks}>
               {tasks.map((task, index) => (
-                <div className={`${styles.task} ${task.completed ? styles["completed"] : ""}`} id={`task ${index}`}>
+                <div className={`${styles.task} ${task.completed ? styles["completed"] : ""}`} key={`task-${index}`}>
                   <div className={styles["task-title"]}>
                       {task.title}
                   </div>

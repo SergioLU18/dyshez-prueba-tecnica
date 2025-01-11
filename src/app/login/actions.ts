@@ -1,6 +1,4 @@
 'use server'
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
 import { createClient } from '../../../utils/supabase/server'
 
 export async function resetPassword(formData: FormData) {
@@ -17,38 +15,59 @@ export async function resetPassword(formData: FormData) {
 
 }
 
-export async function login(formData: FormData, method: 'email' | 'phone') {
+export async function login(formData: FormData) {
 
     const supabase = await createClient()
 
-    const emailPhone = formData.get('email') as string
+    let identifier = formData.get('email') as string
     const password = formData.get('password') as string
+    const isEmail = identifier.includes("@")
 
-    if(method === 'email') {
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-            email: emailPhone,
-            password: password
-        })
-
-        if(signInError) {
-            return signInError
-        }
-    }
-    else {
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-            phone: `52${emailPhone}`,
-            password: password
-        })
-
-        if(signInError) {
-            return signInError
-        }
+    if(!isEmail) {
+        identifier = `52${identifier}`
     }
 
+    const signInCredentials = isEmail 
+        ? { email: identifier, password: password } 
+        : { phone: identifier, password: password };
 
+    const { data: userData, error: signInError } = await supabase.auth.signInWithPassword(signInCredentials)
 
-    // revalidatePath('/login')
-    // redirect('/')
+    const userPhone = userData.user?.phone
+    await supabase.auth.signOut()
+
+    if(signInError || !userPhone) {
+        return {userPhone, signInError}
+    }
+
+    const { error: otpError } = await supabase.auth.signInWithOtp({ 
+        phone: userPhone,
+    })
+
+    return {userPhone, otpError}
+
+}
+
+export async function resendOtp(phone: string) {
+
+    const supabase = await createClient()
+
+    const { error } = await supabase.auth.signInWithOtp({ phone })
+
+    return error
+
+}
+
+export async function uploadOtp(phone: string, token: string) {
+
+    const supabase = await createClient()
+
+    const { error } = await supabase.auth.verifyOtp({ phone, token, type: 'sms'})
+
+    if(error) {
+        return error
+    }
+
 }
 
 export async function signup(formData: FormData) {

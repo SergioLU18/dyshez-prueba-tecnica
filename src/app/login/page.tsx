@@ -6,11 +6,12 @@ import { Welcome } from "@/components/welcome";
 import { PageContainer } from "@/components/pageContainer";
 import { ThirdPartyLogin, thirdPartyLogins, initialFormData, initialFormErrors } from './constants';
 import * as React from 'react';
-import { login, resetPassword, signup } from "./actions";
+import { login, resetPassword, signup, uploadOtp, resendOtp } from "./actions";
 import { Button } from "@/components/button";
 import { OTPInput } from "@/components/otpInput";
 import { FormInput } from "@/components/formInput";
 import { formatPhoneNumber } from "../../../utils/helpers";
+import { Toaster, toast } from 'sonner'
 
 export default function LoginPage() {
     
@@ -22,7 +23,8 @@ export default function LoginPage() {
     const [loading, setLoading] = React.useState(false);
     const [otpActive, setOtpActive] = React.useState(false);
     const [termsChecked, setTermsChecked] = React.useState(false)
-    const [submitError, setSubmitError] = React.useState("");
+    const [otpPhone, setOtpPhone] = React.useState("")
+    const [signUpComplete, setSignUpComplete] = React.useState(false)
     
     const loginFormRef = React.useRef<HTMLFormElement>(null);
     const signupFormRef = React.useRef<HTMLFormElement>(null);
@@ -31,7 +33,6 @@ export default function LoginPage() {
 
     const toggleForgotPassword = () => {
         setformData(initialFormData)
-        setSubmitError("");
         setForgotPassword(!forgotPassword);
         setFormErrors(initialFormErrors)
     }
@@ -40,7 +41,6 @@ export default function LoginPage() {
         setformData(initialFormData)
         setFormErrors(initialFormErrors)
         setIsLogin(!isLogin);
-        setSubmitError("")
         setTermsChecked(false)
     }
 
@@ -52,11 +52,24 @@ export default function LoginPage() {
         }))
     }
 
+    const handleOtpSubmit = async (otp: string) => {
+        const error = await uploadOtp(otpPhone, otp)
+        return error;
+    }
+
+    const handleResend = async () => {
+        const error = await resendOtp(otpPhone)
+        if(error) {
+            // TODO: Set toast error
+        }
+    }
+
     const handleEnterPress = (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
             handleSubmit()
         }
       };
+
 
     React.useEffect(() => {
         window.addEventListener('keydown', handleEnterPress);
@@ -92,7 +105,7 @@ export default function LoginPage() {
         const newErrors = {...initialFormErrors};
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
         const phoneRegex = /^\d+$/;
-        if(!emailRegex.test(formData.email) && (phoneRegex.test(formData.email) && formData.email.length !== 10)) {
+        if(!emailRegex.test(formData.email) && (!phoneRegex.test(formData.email) || (phoneRegex.test(formData.email) && formData.email.length !== 10))) {
             newErrors.email = "Please, enter a valid email or phone"
         }
         if(!formData.password && !forgotPassword) {
@@ -138,18 +151,18 @@ export default function LoginPage() {
         }))
         // If any errors were found, prevent submit
         if(Object.values(newErrors).some((value) => value.trim() !== '')) return
-        setSubmitError("");
         setLoading(true);
         if(isLogin) {
             const formElement = loginFormRef.current as HTMLFormElement
             const data = new FormData(formElement);
             if(!forgotPassword) {
-                const phoneRegex = /^\d+$/;
-                const error = await login(data, phoneRegex.test(formData.email) ? 'phone' : 'email');
-                if(error) {
-                    setSubmitError(error.message);
+                const {userPhone, signInError, otpError} = await login(data);
+                const error = signInError || otpError;
+                if(error || !userPhone) {
+                    toast.error(error?.message ?? "Something went wrong! Please try again")
                 }
                 else {
+                    setOtpPhone(userPhone)
                     setOtpActive(true)
                 }
             }
@@ -160,7 +173,7 @@ export default function LoginPage() {
                     setResetSent(true);
                 }
                 else {
-                    setSubmitError(error.message);
+                    toast.error(error.message)
                 }
             }
         }
@@ -169,21 +182,24 @@ export default function LoginPage() {
             const data = new FormData(formElement)
             const error = await signup(data);
             if(error) {
-                setSubmitError(error.message)
+                toast.error(error.message)
             }
             else {
                 // TODO: Show message that asks you to verify email
+                setSignUpComplete(true)
             }
         }
         setLoading(false)
     }
 
-    const showThirdPartyLogins = !forgotPassword && !resetSent && isLogin;
+    const showInstructions = forgotPassword || signUpComplete
+    const showThirdPartyLogins = !forgotPassword && !resetSent && isLogin && !showInstructions;
     
     const headerMessage = isLogin ? "Log in with your e-mail or your phone number." : "Join the revolution! To begin using our services, enter your personal information below and join the Dyshez movement."
-    const resetPasswordMessage = resetSent ? `An email with instructions to reset your password has been sent to ${formData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
+    const instructionSubMessage = signUpComplete ? "Follow the instructions sent to your email to verify your account" : resetSent ? `An email with instructions to reset your password has been sent to ${formData.email}` : "Enter the email associated with your account and we will send you an email with instructions for forgetting your password"
     const submitButtonLabel = isLogin ? "Continue" : "Create account"
     const subActionLabel = !isLogin ? "If you already have a dyshez account and want to add a new branch, learn how to do it" : !forgotPassword ? "Forgot your password? " : "Remembered your password? "
+    const instructionMessage = signUpComplete ? "Check your email" : "Reset password"
 
     return (
         <PageContainer>
@@ -191,7 +207,7 @@ export default function LoginPage() {
             <div className={`${styles["card"]} ${!isLogin ? styles["signup"] : forgotPassword ? styles["forgot-password"] : ""}`}>
                 {/* HEADER */}
                 {!otpActive && (<>
-                    {!forgotPassword && (
+                    {!showInstructions && (
                         <div className={styles.header}>
                             <div className={styles['header-actions']}>
                                 <button ref={loginRef} className={isLogin ? styles['button-active'] : styles.button} onClick={toggleIsLogin}>
@@ -209,10 +225,10 @@ export default function LoginPage() {
                         </div>
                     )}
 
-                    {forgotPassword && (
-                        <div className={styles["forgot-password-message"]}>
-                            Reset Password
-                            <p>{resetPasswordMessage}</p>
+                    {showInstructions && (
+                        <div className={styles["instruction-message"]}>
+                            {instructionMessage}
+                            <p>{instructionSubMessage}</p>
                         </div>
                     )}
 
@@ -241,7 +257,7 @@ export default function LoginPage() {
                             )}
                         </form>)}
                         {/* SIGNUP VIEW */}
-                        {!isLogin && (<form className={styles["signup-inputs"]} ref={signupFormRef}>
+                        {!isLogin && !showInstructions && (<form className={styles["signup-inputs"]} ref={signupFormRef}>
                             <FormInput
                                 value={formData.names}
                                 placeholder="Name(s)*"
@@ -314,8 +330,7 @@ export default function LoginPage() {
                                 error={formErrors.confirmPassword}
                             />
                         </form>)}
-                        {!forgotPassword && (<p className={styles["error-message"]}>{submitError}</p>)}
-                        {!isLogin && (
+                        {!isLogin && !showInstructions && (
                             <div className={styles["terms"]}>
                                 <div className={`${styles["checkbox-container"]} ${termsChecked ? styles["checked"] : formErrors.terms ? styles["error"] : ""}`} onClick={toggleTermsChecked}>
                                     {termsChecked && (<Image
@@ -329,7 +344,7 @@ export default function LoginPage() {
                                 <p>I agree to the terms and conditions</p>
                             </div>
                         )}
-                        <div className={styles["login-button-container"]}>
+                        {(!resetSent && !signUpComplete) && <div className={styles["login-button-container"]}>
                             <Button primaryAction={handleSubmit} label={submitButtonLabel} disabled={loading} />
                             <div className={styles["forgot-password"]}>
                                 {subActionLabel}
@@ -337,7 +352,7 @@ export default function LoginPage() {
                                     {!forgotPassword ? "Reset it." : "Log in."}
                                 </p>)}
                             </div>
-                        </div>
+                        </div>}
                     </div>)}
 
                     {showThirdPartyLogins && (<div className={styles["login-socials"]}>
@@ -354,8 +369,9 @@ export default function LoginPage() {
                         ))}
                     </div>)}
                 </>)}
-                {otpActive && <OTPInput length={6} />}
+                {otpActive && <OTPInput length={6} onSubmit={handleOtpSubmit} handleResend={handleResend}/>}
             </div>
+            <Toaster richColors/>
         </PageContainer>
     );
 }

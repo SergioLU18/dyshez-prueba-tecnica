@@ -184,3 +184,59 @@ first, but it fallbacks to SMS in case of any errors. So, go to your twilio dash
 copy all the necessary tokens and SIDs onto your supabase project. You are free to change the
 ```SMS OTP Expiry``` and ```SMS Message```, just make sure the ```SMS Message``` still contains
 the ```{{ .Code }}``` variable. Also, make sure to set the ```SMS OTP Length``` to 6.
+
+## Edge Function
+
+If for some reason the user does not have a Whatsapp account on phone verification, we want
+to send a message to it's SMS instead. We are going to do that with a ```Edge Function```. 
+There's a pretty short introduction to this topic on your supabase dashboard. You can navigate
+there by clicking the ```Edge Functions``` tab. Note that you will need to have docker installed
+for you to build and/or deploy edge functions. What our function will do is the following:
+
+1.- Receive a payload from Twilio with the status of a message
+2.- Check if the status of the message is ```undelivered``` or ```failed```
+3.- Resend the OTP through SMS if needded
+
+This function also requires you to again use ```YOUR_API_KEY``` and also to use your SR key 
+(service role key) that you can both find on your API configuration tab
+
+```
+import { serve } from 'https://deno.land/std@0.131.0/http/server.ts';
+
+serve(async (req) => {
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+
+  const formData = new URLSearchParams(await req.text());
+
+  const MessageStatus = formData.get('MessageStatus');
+  
+  if (MessageStatus === 'undelivered' || MessageStatus === 'failed') {
+    // Trigger SMS OTP if WhatsApp OTP fails
+    const response = await fetch('https://wpgafhjqujkqtddxppgn.supabase.co/auth/v1/otp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer YOUR_SERVICE_ROLE_KEY`,
+        'apikey': 'YOUR_API_KEY',
+      },
+      body: JSON.stringify({
+        phone: formData.get('To')
+      }),
+    });
+
+    if (!response.ok) {
+      return new Response(response.body, { status: response.status });
+    }
+  }
+
+  return new Response('OK', { status: 200 });
+});
+```
+
+Now, for your last step, go to your Twilio console. If you have already integrated with
+supabase, you can now go to the Messaging -> Services tab and see that there is a supabase
+user in there. Click the supabase user and then go to the integration tab. There should
+be a field named ```Callback URL``` where you should put your function URL. It shoud look 
+something like this: ```https://{YOUR_PROJECT}.supabase.co/functions/v1/otp-fallback```

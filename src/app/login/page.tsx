@@ -156,8 +156,7 @@ export default function LoginPage() {
             const formElement = loginFormRef.current as HTMLFormElement
             const data = new FormData(formElement);
             if(!forgotPassword) {
-                const {userPhone, signInError, otpError} = await login(data);
-                const error = signInError || otpError;
+                const {userPhone, error} = await login(data);
                 if(error || !userPhone) {
                     toast.error(error?.message ?? "Something went wrong! Please try again")
                 }

@@ -1,11 +1,11 @@
 'use client'
-import { redirect } from 'next/navigation';
 import * as React from 'react';
 import { logout, getUserData, getUserTasks, createUserTask, completeUserTask, deleteUserTask } from './actions';
 import styles from './page.module.css'
 import { PageContainer } from '@/components/pageContainer';
 import { UserProfile, UserTask } from '@/types';
 import LoadingDots from '@/components/loadingDots';
+import { Toaster, toast } from 'sonner'
 
 const Home: React.FC = () => {
 
@@ -89,10 +89,10 @@ const Home: React.FC = () => {
     const { data, error }= await createUserTask(newTask, userProfile?.userId)
     
     if(error || !data) {
-      // TODO: Handle error logic
+      ("Something went wrong while creating your task. Please, try agains")
     }
     else {
-      // If no error also create task on FE
+      toast.success("Your task was created successfully!")
       newTask.id = data[0].id
       
       setTasks(customTaskSort([...tasks, newTask]))
@@ -110,7 +110,7 @@ const Home: React.FC = () => {
     if(!userProfile) return
     const {processedTasks, error} = await getUserTasks(userProfile.userId)
     if(error) {
-      // TODO: Add logic to set error toast
+      toast.error("Something went wrong while obtaining your tasks. Please, refresh the page")
     }
     setTasks(customTaskSort(processedTasks))
   }
@@ -177,11 +177,11 @@ const Home: React.FC = () => {
                   )}
                 </div>
               ))}
+              <Toaster richColors/>
           </div>
           <button className={`${styles.button} ${styles.logout}`} onClick={logout}>
             Logout
           </button>
-
 
           {/* New Task Modal */}
           {modalOpen && (<div className={styles.modal}>

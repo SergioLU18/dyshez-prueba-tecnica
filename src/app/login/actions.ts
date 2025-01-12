@@ -40,11 +40,22 @@ export async function login(formData: FormData) {
         return {userPhone, signInError}
     }
 
-    const { error: otpError } = await supabase.auth.signInWithOtp({ 
+    const { error: whatsappError } = await supabase.auth.signInWithOtp({ 
         phone: userPhone,
+        options: {
+            channel:'whatsapp',
+        }
     })
 
-    return {userPhone, otpError}
+    if(whatsappError) {
+        const { error: smsError } = await supabase.auth.signInWithOtp({
+            phone: userPhone
+        })
+
+        return {userPhone, error: smsError}
+    }
+
+    return {userPhone, error: whatsappError}
 
 }
 
@@ -52,9 +63,22 @@ export async function resendOtp(phone: string) {
 
     const supabase = await createClient()
 
-    const { error } = await supabase.auth.signInWithOtp({ phone })
+    const { error: whatsappError } = await supabase.auth.signInWithOtp({ 
+        phone,
+        options: {
+            channel:'whatsapp',
+        }
+    })
 
-    return error
+    if( whatsappError ) {
+        const { error: smsError } = await supabase.auth.signInWithOtp({
+            phone
+        })
+
+        return {error: smsError}
+    }
+
+    return {error: whatsappError}
 
 }
 

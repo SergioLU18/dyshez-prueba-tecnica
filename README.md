@@ -38,14 +38,16 @@ This project uses supabase for everything BE. These are the main things you'll n
 ### Initial supabase configuration
 
 There's 2 keys you'll need to connect to your supabase project and you can find them both under
-Project Settings > API. You'll need to create a ```.env.local``` file and then add 2 variables:
+Project Settings -> API. You'll need to create a ```.env.local``` file and then add 2 variables:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL='YOUR_PROJECT_URL'
 NEXT_PUBLIC_SUPABASE_ANON_KEY='YOUR_PROJECT_ANON_PUBLIC_KEY'
 ```
 
-Adding these 2 keys will allow the project to connect to your supabase database
+Adding these 2 keys will allow the project to connect to your supabase database. Also, make sure
+that you go to Authentication -> URL Configuration and use your site's URL. In case you are just
+going to run the app locally, then set the URL to ```http://localhost:3000```.
 
 ### Database setup
 
@@ -113,4 +115,72 @@ no longer wanna keep
 
 ### Triggers and functions
 
-### Email & phone providers
+This is probably the most important part of the project. When creating a user, supabase only
+lets you sign-up with either a phone or an email, and this is a roadblock because we want to
+eventually allow our users to sign in with whichever method they want after they create their
+account and verify their respective email and phone. So, we are going to have to create a 
+```function``` that update the ```auth.users``` table so that every user has both their
+email and phone. Usually, we can just use supabase's function creator and start off with some
+templates, but since we are handling authentication data, we must use the ```SQL Editor```.
+
+So, we will need to access the ```SQL Editor``` in our supabase project and run the following
+query:
+
+```
+GRANT UPDATE ON auth.users TO postgres;
+```
+
+This query will allow the ```postgres``` user from our ```SQL EDITOR``` to make changes on our users
+table. We can now move on to the function query:
+
+```
+CREATE OR REPLACE FUNCTION update_auth_phone()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE auth.users
+    SET phone = NEW.mobile_phone
+    WHERE id = NEW.user_id;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+```
+
+What this query does is create a function ```update_auth_phone``` that is going to expect a new
+row ```NEW``` and use it to update the users phone (```SET phone = NEW.mobile_phone```). If by 
+this point you have created your tables with different column names than the ones mentioned here, 
+then you'll have to modify the function so that the column's names match. Also, make sure you
+don't remove ```SECURITY DEFINER``` from the function as that is vital to making sure only 
+allowed users may call this function. 
+
+We will now make sure that it is only the ```postgres``` user that owns the function:
+
+```
+ALTER FUNCTION update_auth_phone() OWNER TO postgres;
+```
+
+And last but not least, we need to create the trigger that will tell our database that whenever
+a new row is inserted into ```profile```, we must use it to update the user's phone:
+
+```
+CREATE TRIGGER after_insert_profile
+AFTER INSERT ON public.profiles
+FOR EACH ROW
+EXECUTE FUNCTION update_auth_phone();
+```
+
+### Email & Phone providers
+
+By default, supabase comes with a limited-rate-email-provider that will fit perfectly to your
+localhost needs. Go to Authentication -> Providers and open the Email tab. Make sure to turn
+on ```Enable email provider```, ```Confirm email```, and ```Secure email exchange```. We are
+only going to use the email provider for email verification on signup, so you can leave the
+```Email OTP Expiration``` to the default 86,400 seconds even if you get a warning. 
+
+Now, for the phone provider tab you first have to select an SMS provider. For this project
+specifically, we use Twilio. You have to create a project on Twilio and buy a phone that is
+at least capable of SMS messaging. This project attempts to message users through Whatsapp
+first, but it fallbacks to SMS in case of any errors. So, go to your twilio dashboard and
+copy all the necessary tokens and SIDs onto your supabase project. You are free to change the
+```SMS OTP Expiry``` and ```SMS Message```, just make sure the ```SMS Message``` still contains
+the ```{{ .Code }}``` variable. Also, make sure to set the ```SMS OTP Length``` to 6.

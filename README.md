@@ -214,7 +214,7 @@ serve(async (req) => {
   
   if (MessageStatus === 'undelivered' || MessageStatus === 'failed') {
     // Trigger SMS OTP if WhatsApp OTP fails
-    const response = await fetch('https://wpgafhjqujkqtddxppgn.supabase.co/auth/v1/otp', {
+    const response = await fetch('https://{{YOUR_PROJECT}}.supabase.co/auth/v1/otp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

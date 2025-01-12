@@ -77,18 +77,7 @@
         "app/login/page": "action-browser"
       }
     },
-    "40fb4c8d56fe9969edf3f7e2a3248251c0bac81a85": {
-      "workers": {
-        "app/login/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Flogin%2Factions.ts%22%2C%5B%5B%224028c93e75c322fdc60758878181c61b574c7310b8%22%2C%22resetPassword%22%5D%2C%5B%22404ea0ec95d17f7ae7094a1eff9a34ce9bf39451fd%22%2C%22resendOtp%22%5D%2C%5B%2240831820bf87dec5db2a3382441637eb6588f4ec37%22%2C%22login%22%5D%2C%5B%2240fb4c8d56fe9969edf3f7e2a3248251c0bac81a85%22%2C%22signup%22%5D%2C%5B%226002fabc599911f2359680e8831c5aa51d0740fdcd%22%2C%22uploadOtp%22%5D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        }
-      },
-      "layer": {
-        "app/login/page": "action-browser"
-      }
-    },
-    "60831820bf87dec5db2a3382441637eb6588f4ec37": {
+    "404ea0ec95d17f7ae7094a1eff9a34ce9bf39451fd": {
       "workers": {
         "app/login/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Flogin%2Factions.ts%22%2C%5B%5B%224028c93e75c322fdc60758878181c61b574c7310b8%22%2C%22resetPassword%22%5D%2C%5B%22404ea0ec95d17f7ae7094a1eff9a34ce9bf39451fd%22%2C%22resendOtp%22%5D%2C%5B%2240831820bf87dec5db2a3382441637eb6588f4ec37%22%2C%22login%22%5D%2C%5B%2240fb4c8d56fe9969edf3f7e2a3248251c0bac81a85%22%2C%22signup%22%5D%2C%5B%226002fabc599911f2359680e8831c5aa51d0740fdcd%22%2C%22uploadOtp%22%5D%5D%5D%5D&__client_imported__=true!",
@@ -110,7 +99,7 @@
         "app/login/page": "action-browser"
       }
     },
-    "0002fabc599911f2359680e8831c5aa51d0740fdcd": {
+    "40fb4c8d56fe9969edf3f7e2a3248251c0bac81a85": {
       "workers": {
         "app/login/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Flogin%2Factions.ts%22%2C%5B%5B%224028c93e75c322fdc60758878181c61b574c7310b8%22%2C%22resetPassword%22%5D%2C%5B%22404ea0ec95d17f7ae7094a1eff9a34ce9bf39451fd%22%2C%22resendOtp%22%5D%2C%5B%2240831820bf87dec5db2a3382441637eb6588f4ec37%22%2C%22login%22%5D%2C%5B%2240fb4c8d56fe9969edf3f7e2a3248251c0bac81a85%22%2C%22signup%22%5D%2C%5B%226002fabc599911f2359680e8831c5aa51d0740fdcd%22%2C%22uploadOtp%22%5D%5D%5D%5D&__client_imported__=true!",
@@ -130,39 +119,6 @@
       },
       "layer": {
         "app/login/page": "action-browser"
-      }
-    },
-    "404ea0ec95d17f7ae7094a1eff9a34ce9bf39451fd": {
-      "workers": {
-        "app/login/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Flogin%2Factions.ts%22%2C%5B%5B%224028c93e75c322fdc60758878181c61b574c7310b8%22%2C%22resetPassword%22%5D%2C%5B%22404ea0ec95d17f7ae7094a1eff9a34ce9bf39451fd%22%2C%22resendOtp%22%5D%2C%5B%2240831820bf87dec5db2a3382441637eb6588f4ec37%22%2C%22login%22%5D%2C%5B%2240fb4c8d56fe9969edf3f7e2a3248251c0bac81a85%22%2C%22signup%22%5D%2C%5B%226002fabc599911f2359680e8831c5aa51d0740fdcd%22%2C%22uploadOtp%22%5D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        }
-      },
-      "layer": {
-        "app/login/page": "action-browser"
-      }
-    },
-    "40a497e0f812fd64f11c66b895467bc74a2bcf0815": {
-      "workers": {
-        "app/reset/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Freset%2Factions.ts%22%2C%5B%5B%2240a497e0f812fd64f11c66b895467bc74a2bcf0815%22%2C%22updateUserPassword%22%5D%2C%5B%2240deecaa6cedd73076e908116905813a26e3012c7e%22%2C%22exchangeCodeSession%22%5D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        }
-      },
-      "layer": {
-        "app/reset/page": "action-browser"
-      }
-    },
-    "40deecaa6cedd73076e908116905813a26e3012c7e": {
-      "workers": {
-        "app/reset/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsergio%2FDocuments%2FDyshez%2Fdyshez-prueba-tecnica%2Fsrc%2Fapp%2Freset%2Factions.ts%22%2C%5B%5B%2240a497e0f812fd64f11c66b895467bc74a2bcf0815%22%2C%22updateUserPassword%22%5D%2C%5B%2240deecaa6cedd73076e908116905813a26e3012c7e%22%2C%22exchangeCodeSession%22%5D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        }
-      },
-      "layer": {
-        "app/reset/page": "action-browser"
       }
     }
   },

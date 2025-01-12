@@ -55,26 +55,26 @@ The first table we are going to create is the ```profile``` table which will ser
 where we we'll store all the secondary details of our users. Here are all the columns you should add:
 
 ```
-    user_id -> Foreign key of type uuid that references the id of a user from auth.users. You should
-    also set it as a primary key alongisde the id column
-    names -> key of type text
-    last_names -> key of type text
-    website -> key of type text
-    email -> key of type text
-    mobile_phone -> key of type text
-    secondary_phone -> key of type text
+user_id -> Foreign key of type uuid that references the id of a user from auth.users. You should
+also set it as a primary key alongisde the id column
+names -> key of type text
+last_names -> key of type text
+website -> key of type text
+email -> key of type text
+mobile_phone -> key of type text
+secondary_phone -> key of type text
 ```
 
 The other table is called ```task```. Here we are going to store all the "TO-DOs" that our user
 will be able to create after logging in. Here are all the columns you should add:
 
 ```
-    user_id -> Foreign key of type uuid that references the id of a user from auth.users. You should
-    also set it as a primary key alongisde the id column
-    title -> key of type text
-    description -> key of type text
-    completed -> key of type boolean
-    completed_at -> key of type date
+user_id -> Foreign key of type uuid that references the id of a user from auth.users. You should
+also set it as a primary key alongisde the id column
+title -> key of type text
+description -> key of type text
+completed -> key of type boolean
+completed_at -> key of type date
 ```
 
 ### RLS Policies
@@ -90,25 +90,25 @@ For the ```profile``` table, we want users to create their profile whenever they
 application. So, here are the rules we are defining
 
 ```
-    Every user can insert rows - This will allow an application with 'YOUR_PROJECT_ANON_PUBLIC_KEY'
-    to create profiles whenever users sign up.
-    Authenticated user can edit own data - This will allow authenticated users to update their data
-    whenever they feel like so
-    Authenticated user can view own data - This will allow us to show authenticated users their data
-    on the application
+Every user can insert rows - This will allow an application with 'YOUR_PROJECT_ANON_PUBLIC_KEY'
+to create profiles whenever users sign up.
+Authenticated user can edit own data - This will allow authenticated users to update their data
+whenever they feel like so
+Authenticated user can view own data - This will allow us to show authenticated users their data
+on the application
 ```
 
 Now, onto the ```tasks``` table. Here we will have users manipulate their tasks as they want, which
 means full CRUD (Create, read, update, delete) permissions
 
 ```
-    Every authenticated user can insert rows - This will allow users to insert new tasks
-    Every authenticated user can view own data - This will allow users to see their tasks on the
-    application
-    Every authenticated user can update own data - This will allow users to change their tasks
-    from incomplete to complete
-    Every authenticated user can delete own data - This will allow users to get rid of tasks they
-    no longer wanna keep
+Every authenticated user can insert rows - This will allow users to insert new tasks
+Every authenticated user can view own data - This will allow users to see their tasks on the
+application
+Every authenticated user can update own data - This will allow users to change their tasks
+from incomplete to complete
+Every authenticated user can delete own data - This will allow users to get rid of tasks they
+no longer wanna keep
 ```
 
 ### Triggers and functions

@@ -31,6 +31,8 @@ export default function LoginPage() {
     const loginRef = React.useRef<HTMLButtonElement>(null);
     const signupRef = React.useRef<HTMLButtonElement>(null);
 
+    // All toggles will reset some of their respective data
+
     const toggleForgotPassword = () => {
         setformData(initialFormData)
         setForgotPassword(!forgotPassword);
@@ -52,6 +54,7 @@ export default function LoginPage() {
         }))
     }
 
+    // Error handling will be done in OTP side so we must return an error
     const handleOtpSubmit = async (otp: string) => {
         const error = await uploadOtp(otpPhone, otp)
         return error;
@@ -60,7 +63,7 @@ export default function LoginPage() {
     const handleResend = async () => {
         const error = await resendOtp(otpPhone)
         if(error) {
-            // TODO: Set toast error
+            toast.error(error.message)
         }
     }
 
@@ -101,6 +104,8 @@ export default function LoginPage() {
         }));
     };
 
+    // This function will check for any errors on our form. If errors are present, our custom
+    // inputs will be marked as 'errors' and display the error with a tooltip
     const checkFormErrors = () => {
         const newErrors = {...initialFormErrors};
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
@@ -144,6 +149,7 @@ export default function LoginPage() {
     }
     
     const handleSubmit = async () => {
+        // Check for errors before submitting
         const newErrors = checkFormErrors();
         setFormErrors((prevErrors) => ({
             ...prevErrors,
@@ -212,6 +218,7 @@ export default function LoginPage() {
                                 <button ref={loginRef} className={isLogin ? styles['button-active'] : styles.button} onClick={toggleIsLogin}>
                                     Login
                                 </button>
+                                <Toaster richColors/>
                                 <button ref={signupRef} className={!isLogin ? styles['button-active'] : styles.button} onClick={toggleIsLogin}>
                                     Sign Up
                                 </button>
@@ -231,7 +238,7 @@ export default function LoginPage() {
                         </div>
                     )}
 
-                    {!resetSent && (<div className={styles["login-form"]}>
+                    {!resetSent && (<div className={styles["form"]}>
                         {/* LOGIN VIEW */}
                         {isLogin && (<form className={styles["login-inputs"]} ref={loginFormRef}>
                             <FormInput 
@@ -343,18 +350,18 @@ export default function LoginPage() {
                                 <p>I agree to the terms and conditions</p>
                             </div>
                         )}
-                        {(!resetSent && !signUpComplete) && <div className={styles["login-button-container"]}>
-                            <Button primaryAction={handleSubmit} label={submitButtonLabel} disabled={loading} />
-                            <div className={styles["forgot-password"]}>
-                                {subActionLabel}
-                                {isLogin && (<p onClick={toggleForgotPassword}>
-                                    {!forgotPassword ? "Reset it." : "Log in."}
-                                </p>)}
-                            </div>
-                        </div>}
                     </div>)}
+                    {(!resetSent && !signUpComplete) && <div className={styles["login-button-container"]}>
+                        <Button primaryAction={handleSubmit} label={submitButtonLabel} disabled={loading} />
+                        <div className={styles["forgot-password"]}>
+                            {subActionLabel}
+                            {isLogin && (<p onClick={toggleForgotPassword}>
+                                {!forgotPassword ? "Reset it." : "Log in."}
+                            </p>)}
+                        </div>
+                    </div>}
 
-                    {showThirdPartyLogins && (<div className={styles["login-socials"]}>
+                    {/* {showThirdPartyLogins && (<div className={styles["login-socials"]}>
                         {thirdPartyLogins.map((thirdParty: ThirdPartyLogin, index: number) => (
                             <div key={index} className={styles["login-socials-button"]}>
                                 <Image
@@ -366,11 +373,10 @@ export default function LoginPage() {
                                 />
                             </div>
                         ))}
-                    </div>)}
+                    </div>)} */}
                 </>)}
                 {otpActive && <OTPInput length={6} onSubmit={handleOtpSubmit} handleResend={handleResend}/>}
             </div>
-            <Toaster richColors/>
         </PageContainer>
     );
 }

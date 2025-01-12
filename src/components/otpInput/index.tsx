@@ -85,11 +85,13 @@ export const OTPInput: React.FC<OTPInputProps> = ({length, onSubmit, handleResen
         }
     }
 
-    const handleClick = (index: number) => {
+    // Auto focus first empty input to prevent user from skipping inputs
+    const handleClick = () => {
         const firstEmtpyInput = otp.findIndex(value => value === "");
         inputsRef.current[firstEmtpyInput]?.focus()
     }
 
+    // Auto-select all input's content to allow for easier rewrite
     const handleFocus = (index: number) => {
         inputsRef.current[index]?.select()
     }
@@ -132,7 +134,7 @@ export const OTPInput: React.FC<OTPInputProps> = ({length, onSubmit, handleResen
                                 className={styles.input}
                                 onChange={(e) => handleChange(index, e)}
                                 onKeyDown={(e) => handleKeyDown(index, e)}
-                                onClick={() => {handleClick(index)}}
+                                onClick={handleClick}
                                 onFocus={() => {handleFocus(index)}}
                                 onContextMenu={handleContextMenu}
                             />

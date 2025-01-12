@@ -19,6 +19,8 @@ export async function login(formData: FormData) {
 
     const supabase = await createClient()
 
+    // We are allowing our user to login with either phone or email so we must format our
+    // signInWithPassword function accordingly
     let identifier = formData.get('email') as string
     const password = formData.get('password') as string
     const isEmail = identifier.includes("@")
@@ -55,14 +57,14 @@ export async function resendOtp(phone: string) {
 
     const supabase = await createClient()
 
-    const { error: whatsappError } = await supabase.auth.signInWithOtp({ 
+    const { error } = await supabase.auth.signInWithOtp({ 
         phone,
         options: {
             channel:'whatsapp',
         }
     })
 
-    return {error: whatsappError}
+    return error
 
 }
 

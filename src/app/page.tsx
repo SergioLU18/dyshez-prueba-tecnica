@@ -16,6 +16,7 @@ const Home: React.FC = () => {
   const [newTaskTitle, setNewTaskTitle] = React.useState("");
   const [newTaskDescription, setNewTaskDescription] = React.useState("")
 
+  // Custom sort made to show the tasks by completion, date of creation, and date of completion
   const customTaskSort = (taskArray: UserTask[]) => {
     return taskArray.sort((a, b) => {
       if(!a.completed && !b.completed) {
@@ -44,9 +45,10 @@ const Home: React.FC = () => {
   const handleDeleteTask = async (task: UserTask) => {
     const error = await deleteUserTask(task);
     if(error) {
-      // TODO: Handle error logic
+      toast.error(error.message)
     }
     else {
+      // Task is also removed locally so we don't have to run an additional query
       const newTasks = [...tasks];
       const index = newTasks.indexOf(task);
       newTasks.splice(index, 1);
@@ -55,11 +57,10 @@ const Home: React.FC = () => {
   }
 
   const handleCompleteTask = async (task: UserTask) => {
-
     const error = await completeUserTask(task)
 
     if(error) {
-      //TODO: Handle error logic
+      toast.error(error.message)
     }
     else {
       const newTasks = [...tasks];
@@ -77,6 +78,8 @@ const Home: React.FC = () => {
   const handleCreateTask = async () => {
     if(!newTaskDescription || !newTaskTitle) return
     
+    // New task is also created locally so that we can update our local tasks
+    // without needing to query them
     const newTask = {
       id: null,
       createdAt: new Date(),

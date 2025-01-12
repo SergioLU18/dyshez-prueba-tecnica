@@ -54,6 +54,7 @@ export default function ResetPage() {
     }
 
     const handleCode = async () => {
+        // Blocks reset page if no code is present
         if(!code) {
             router.push('/login')
         }

@@ -98,10 +98,12 @@
     font-weight: 500;
 }
 
-.login-form {
+.form {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 48px;
+    flex-grow: 1;
+    justify-content: center;
 }
 
 .login-button-container {

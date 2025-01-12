@@ -77,4 +77,40 @@ will be able to create after logging in. Here are all the columns you should add
     completed_at -> key of type date
 ```
 
+### RLS Policies
+
+As you have probably noticed, every table is created with RLS policies. We must now create the rules
+that will dictate what users can and what they can't do. Supabase allows you to create the RLS 
+policies based of some templates they offer which makes the process smooth and easy.
+
+Note: Whenever 'own data' is mentioned, I'm referring to making the connection between the user's id
+and the ```user_id``` column that we have created on each table
+
+For the ```profile``` table, we want users to create their profile whenever they sign up for the 
+application. So, here are the rules we are defining
+
+```
+    Every user can insert rows - This will allow an application with 'YOUR_PROJECT_ANON_PUBLIC_KEY'
+    to create profiles whenever users sign up.
+    Authenticated user can edit own data - This will allow authenticated users to update their data
+    whenever they feel like so
+    Authenticated user can view own data - This will allow us to show authenticated users their data
+    on the application
+```
+
+Now, onto the ```tasks``` table. Here we will have users manipulate their tasks as they want, which
+means full CRUD (Create, read, update, delete) permissions
+
+```
+    Every authenticated user can insert rows - This will allow users to insert new tasks
+    Every authenticated user can view own data - This will allow users to see their tasks on the
+    application
+    Every authenticated user can update own data - This will allow users to change their tasks
+    from incomplete to complete
+    Every authenticated user can delete own data - This will allow users to get rid of tasks they
+    no longer wanna keep
+```
+
+### Triggers and functions
+
 ### Email & phone providers
